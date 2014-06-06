@@ -1,0 +1,45 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @profile.user
+%p
+  %b Bio:
+  = @profile.bio
+%p
+  %b Age:
+  = @profile.age
+%p
+  %b Gender:
+  = @profile.gender
+%p
+  %b Interested in:
+  = @profile.interested_in
+%p
+  %b City:
+  = @profile.city
+%p
+  %b Current occupation:
+  = @profile.current_occupation
+%p
+  %b Programming languages:
+  = @profile.programming_languages
+%p
+  %b Native human language:
+  = @profile.native_human_language
+%p
+  %b Other human languages:
+  = @profile.other_human_languages
+%p
+  %b Interests:
+  = @profile.interests
+%p
+  %b Relationship status:
+  = @profile.relationship_status
+%p
+  %b Children:
+  = @profile.children
+
+= link_to 'Edit', edit_profile_path(@profile)
+\|
+= link_to 'Back', profiles_path

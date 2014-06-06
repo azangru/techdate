@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user: 
+  bio: MyText
+  age: 1
+  gender: MyString
+  interested_in: MyString
+  city: MyString
+  current_occupation: MyString
+  programming_languages: MyString
+  native_human_language: MyString
+  other_human_languages: MyString
+  interests: MyText
+  relationship_status: MyString
+  children: 1
+
+two:
+  user: 
+  bio: MyText
+  age: 1
+  gender: MyString
+  interested_in: MyString
+  city: MyString
+  current_occupation: MyString
+  programming_languages: MyString
+  native_human_language: MyString
+  other_human_languages: MyString
+  interests: MyText
+  relationship_status: MyString
+  children: 1
