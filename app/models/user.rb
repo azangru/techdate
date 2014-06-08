@@ -16,6 +16,9 @@ class User < ActiveRecord::Base
 
   mount_uploader :image, ImageUploader
 
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+
   def self.recreate_versions!
   User.find_in_batches do |batch|
     batch.each do |user|

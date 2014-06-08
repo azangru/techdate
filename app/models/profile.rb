@@ -4,4 +4,10 @@ class Profile < ActiveRecord::Base
 
   has_many :views
 
+  validates :age, presence: true, numericality: true
+  validates :children, numericality: true
+  validates :gender, presence: true
+  validates :interested_in, presence: true
+  validates :city, presence: true
+
 end
