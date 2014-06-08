@@ -1,4 +1,7 @@
 Techdate::Application.routes.draw do
+  
+  root to: 'profiles#index'
+
   resources :messages
 
 

@@ -6,12 +6,22 @@ class User < ActiveRecord::Base
          :confirmable, :timeoutable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :image, :paid
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :image, :paid, :role, :remote_image_url
   # attr_accessible :title, :body
 
   has_one :profile
   has_many :views, foreign_key: 'viewer_id'
   has_many :sent_messages, class_name: "Message", foreign_key: 'sender_id'
   has_many :received_messages, class_name: "Message", foreign_key: 'recipient_id'
+
+  mount_uploader :image, ImageUploader
+
+  def self.recreate_versions!
+  User.find_in_batches do |batch|
+    batch.each do |user|
+      user.image.recreate_versions! if user.image?
+    end
+  end
+end
 
 end
