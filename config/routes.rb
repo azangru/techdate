@@ -1,8 +1,6 @@
 Techdate::Application.routes.draw do
-  
-  # root to: 'users#index'
 
-  devise_for :users, controllers: {registrations: 'users'}
+  devise_for :users, controllers: {registrations: 'users', sessions: "sessions"}
 
   get "/messages/:type",constraints: { type: /inbox|sent/ }, to: "messages#index", as: :mailbox_type_messages #Gerry's suggestion to distinguish between the inbox and sent_box contexts in the view
   resources :messages, only: [:show, :index, :update] do # changed :destroy to :update
@@ -13,6 +11,7 @@ Techdate::Application.routes.draw do
   end
 
   devise_scope :user do
+    root to: 'users#index'
     resources :users do  #, only: [:index]
       resources :messages, only: [:new, :create]
     end

@@ -1,16 +1,6 @@
 class MessagesController < ApplicationController
-  
-  ## ANY REASON WE MAY NEED TO INDEX ALL MESSAGES?
-  # # GET /messages
-  # # GET /messages.json
-  # def index
-  #   @messages = Message.all
 
-  #   respond_to do |format|
-  #     format.html # index.html.erb
-  #     format.json { render json: @messages }
-  #   end
-  # end
+
 
   # GET /messages/inbox
   def index
@@ -122,6 +112,19 @@ end
 
 
   ## THESE CONTROLLERS MOST LIKELY WON'T BE NEEDED
+
+  ## ANY REASON WE MAY NEED TO INDEX ALL MESSAGES?
+  # # GET /messages
+  # # GET /messages.json
+  # def index
+  #   @messages = Message.all
+
+  #   respond_to do |format|
+  #     format.html # index.html.erb
+  #     format.json { render json: @messages }
+  #   end
+  # end
+
 
   # # GET /messages/1/edit
   # def edit
