@@ -19,12 +19,26 @@ class User < ActiveRecord::Base
   validates :first_name, presence: true
   validates :last_name, presence: true
 
+
+######### FOR BUILDING A PROFILE ###########
+
+  after_create :build_profile
+
+  def build_profile
+    Profile.create(user: self)
+  end
+############################################
+
+  def full_name
+    [first_name, last_name].join(" ")
+  end
+
   def self.recreate_versions!
   User.find_in_batches do |batch|
     batch.each do |user|
       user.image.recreate_versions! if user.image?
+      end
     end
   end
-end
 
 end

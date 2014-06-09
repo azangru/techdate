@@ -13,7 +13,8 @@ class ProfilesController < ApplicationController
   # GET /profiles/1
   # GET /profiles/1.json
   def show
-    @profile = Profile.find(params[:id])
+    @user = User.find(params[:user_id])
+    @profile = @user.profile
 
     respond_to do |format|
       format.html # show.html.erb
@@ -21,20 +22,21 @@ class ProfilesController < ApplicationController
     end
   end
 
-  # GET /profiles/new
-  # GET /profiles/new.json
-  def new
-    @profile = Profile.new
+  # # GET /profiles/new
+  # # GET /profiles/new.json
+  # def new
+  #   @profile = Profile.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @profile }
-    end
-  end
+  #   respond_to do |format|
+  #     format.html # new.html.erb
+  #     format.json { render json: @profile }
+  #   end
+  # end
 
   # GET /profiles/1/edit
   def edit
-    @profile = Profile.find(params[:id])
+    @user = User.find(params[:user_id])
+    @profile = @user.profile
   end
 
   # POST /profiles
