@@ -37,6 +37,8 @@ Techdate::Application.configure do
 
   # Devise-related
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  # Email letter opener for development only (mandrill used in production)
   config.action_mailer.delivery_method = :letter_opener
   
 end
