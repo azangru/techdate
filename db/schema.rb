@@ -11,16 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140606131601) do
+ActiveRecord::Schema.define(:version => 20140609131953) do
 
   create_table "messages", :force => true do |t|
     t.integer  "sender_id"
     t.integer  "recipient_id"
     t.string   "title"
     t.text     "body"
-    t.boolean  "read"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.boolean  "read",              :default => false
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
+    t.boolean  "remove_from_inbox", :default => false
+    t.boolean  "remove_from_sent",  :default => false
   end
 
   add_index "messages", ["recipient_id"], :name => "index_messages_on_recipient_id"

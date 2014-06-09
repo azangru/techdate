@@ -296,8 +296,7 @@ m1 = Message.create!(
   sender_id: u1.id,
   recipient_id: u2.id,
   title: "Welcome to TechDate",
-  body: "Hello! Welcome to the TechDate site. We are so glad you decided to join!",
-  read: false
+  body: "Hello! Welcome to the TechDate site. We are so glad you decided to join!"
 )
 
 

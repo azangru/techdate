@@ -15,9 +15,9 @@ class MessagesController < ApplicationController
   # GET /messages/inbox
   def index
     @messages = if params[:type]=="inbox"
-      Message.where(recipient_id: current_user.id)
+      Message.where(recipient_id: current_user.id, remove_from_inbox: false)
     elsif params[:type]=="sent"
-      Message.where(sender_id: current_user.id)
+      Message.where(sender_id: current_user.id, remove_from_sent: false)
     else
       raise ArgumentError
     end
@@ -37,6 +37,7 @@ class MessagesController < ApplicationController
   # GET /users/:user_id/messages/new.json
   def new
     @message = Message.new
+    @user = params[:user_id]
 
     respond_to do |format|
       format.html # new.html.erb
@@ -54,7 +55,7 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       if @message.save
-        format.html { redirect_to show_user_profile_path(params[user_id]), notice: 'Message was successfully sent.' }
+        format.html { redirect_to show_user_profile_path(params[:user_id]), notice: 'Message was successfully sent.' }
         format.json { render json: @message, status: :created, location: @message }
       else
         format.html { render action: "new" }
@@ -68,10 +69,35 @@ class MessagesController < ApplicationController
   def show
     @message = Message.find(params[:id])
     @message.read = true
+    @message.save!
 
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @message }
+    end
+  end
+
+  # PUT /messages/1
+  # PUT /messages/1.json
+  def update
+    @message = Message.find(params[:id])
+    if @message.recipient == current_user
+      @message.remove_from_inbox = true
+    elsif @message.sender == current_user
+      @message.remove_from_sent = true
+    end
+    respond_to do |format|
+      if @message.update_attributes(params[:message])
+        if @message.recipient == current_user
+          format.html { redirect_to mailbox_type_messages_path('inbox'), notice: 'Message has been deleted.' }
+        elsif @message.sender == current_user
+          format.html { redirect_to mailbox_type_messages_path('sent'), notice: 'Message has been deleted.' }
+        end
+        format.json { head :no_content }
+      # else
+      #   format.html { render action: "edit" }
+      #   format.json { render json: @message.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -103,21 +129,3 @@ end
   # end
 
 
-  # PUT /messages/1
-  # PUT /messages/1.json
-  def update
-    @message = Message.find(params[:id])
-    if @message.recipient == current_user
-      @message.remove_from_inbox = true
-    if @message.sender == current_user
-      @message.remove_from_sent = true
-    respond_to do |format|
-      if @message.update_attributes(params[:message])
-        format.html { redirect_to @message, notice: 'Message was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @message.errors, status: :unprocessable_entity }
-      end
-    end
-  end
