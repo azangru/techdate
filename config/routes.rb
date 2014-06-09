@@ -1,8 +1,8 @@
 Techdate::Application.routes.draw do
-  
-  # root to: 'users#index'
+
 
   devise_for :users, controllers: {registrations: 'users'}
+  # root to: 'users#index'
 
   devise_scope :user do
     resources :users do  #, only: [:index]

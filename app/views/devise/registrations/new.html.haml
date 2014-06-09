@@ -1,0 +1,51 @@
+%h2 Welcome to Techdate
+
+= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+  = devise_error_messages!
+
+  / Page one
+  %div#page_1
+    %h3 I want to see...
+    %ul
+      %li
+        = f.label(:interested_in_gender, "Super hacker")
+        = f.select :interested_in_gender, ["men", "women"]
+      %li 
+        = f.label(:interested_in_age_start, "aged")
+        = f.number_field :interested_in_age_start, :min=>18, :max=>100
+        = f.label(:interested_in_age_end, "to")
+        = f.number_field :interested_in_age_end, :min=>18, :max=>100
+      %button#page_1_button Continue
+
+  / Page two
+  %div#page_2{style: "display: none"}
+    %h3 Sign up to view profiles
+    %ul
+      %li
+        = f.label :first_name
+        %br
+        =f.text_field :first_name, autofocus: true
+      %li
+        = f.label :last_name
+        %br
+        = f.text_field :last_name
+      %li
+        = f.label :email
+        %br
+        = f.email_field :email
+      %li
+        = f.label :password
+        %br
+        = f.password_field :password, autocomplete: "off"
+      %li
+        = f.label :password_confirmation
+        %br
+        = f.password_field :password_confirmation, autocomplete: "off"
+      %li
+        = f.label :image
+        %br
+        = f.file_field :image, autocomplete: "off"
+      %li
+        = f.submit "Sign up"
+
+= render "devise/shared/links"
