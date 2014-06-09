@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
          :confirmable, :timeoutable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :image, :paid, :role, :remote_image_url
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :image, :paid, :role, :remote_image_url, :interested_in_gender, :interested_in_age_start, :interested_in_age_end
   # attr_accessible :title, :body
 
   has_one :profile
