@@ -1,5 +1,6 @@
 %p#notice= notice
 
+= image_tag(@profile.user.image.url)
 %p
   %b User:
   = @profile.user.full_name
@@ -41,3 +42,4 @@
   = @profile.children
 
 = link_to 'Edit', edit_user_profile_path(@user)
+= link_to 'Send a message', new_user_message_path(@user)

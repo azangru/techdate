@@ -1,17 +1,22 @@
 class UsersController < Devise::RegistrationsController
+  before_filter :authenticate_user!, only: [:index]
 
   GENDER = ["Male", "Female"]
 
   def index
-    unless params[:q].nil?
-      params[:q][:interested_in_age_end_lteq] = params[:q][:interested_in_age_start_gteq]
+    unless user_signed_in?
+      @user = User.new
+      render :new
+    else
+      unless params[:q].nil?
+        params[:q][:interested_in_age_end_lteq] = params[:q][:interested_in_age_start_gteq]
+      end
+      @search = User.search(params[:q])
+      @users = @search.result.includes(:profile)
     end
-    @search = User.search(params[:q])
-    @users = @search.result.includes(:profile)
   end
 
   def search
-    binding.pry
     index
     render :index
   end

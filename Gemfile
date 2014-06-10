@@ -55,7 +55,7 @@ gem 'will_paginate', '~> 3.0'
 group :development, :test do
   gem 'pry-rails'
   gem 'pry-byebug'
-  gem 'better_errors'
+  gem 'better_errors', git: "https://github.com/charliesome/better_errors.git", branch: "master"
   gem 'binding_of_caller'
   gem 'meta_request'
   gem 'hirb'

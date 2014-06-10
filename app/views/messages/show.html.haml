@@ -2,10 +2,10 @@
 
 %p
   %b Sender:
-  = @message.sender_id
+  = @message.sender.full_name
 %p
   %b Recipient:
-  = @message.recipient_id
+  = @message.recipient.full_name
 %p
   %b Title:
   = @message.title
@@ -16,6 +16,6 @@
   %b Read:
   = @message.read
 
-= link_to 'Edit', edit_message_path(@message)
-\|
-= link_to 'Back', messages_path
+/ = link_to 'Edit', edit_message_path(@message)
+/ \|
+/ = link_to 'Back', messages_path

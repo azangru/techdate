@@ -13,13 +13,14 @@
           %span.icon-bar
           %span.icon-bar
         %a.navbar-brand{href: "#"} Techdate
-        .navbar-collapse.collapse.navbar-responsive-collapse
-          %ul.nav.navbar-nav
-            %li= link_to "Search", "", :id => "search_form_link"
-            %li= link_to "My profile" 
-            %li= link_to "Saved profiles" 
-            %li= link_to "Feed"
-            %li= link_to "Messages"
+        -if user_signed_in?
+          .navbar-collapse.collapse.navbar-responsive-collapse
+            %ul.nav.navbar-nav
+              %li= link_to "Search", "", :id => "search_form_link"
+              %li= link_to "My profile" 
+              %li= link_to "Saved profiles" 
+              %li= link_to "Feed"
+              %li= link_to "Messages"
 
     - if user_signed_in?
       You are logged in as #{current_user.email}

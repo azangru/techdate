@@ -2,26 +2,26 @@
 
 %table
   %tr
-    %th Sender
-    %th Recipient
+    -if params[:type] == "inbox"
+      %th From:
+    -if params[:type] == "sent"
+      %th To:
     %th Title
     %th Body
     %th Read
     %th
-    %th
-    %th
-
+  = params[:type]
   - @messages.each do |message|
     %tr
-      %td= message.sender_id
-      %td= message.recipient_id
-      %td= message.title
+      -if params[:type] == "inbox"
+        %td= message.sender.full_name
+      -if params[:type] == "sent"
+        %td= message.recipient.full_name
+      %td= link_to message.title, message
       %td= message.body
       %td= message.read
-      %td= link_to 'Show', message
-      %td= link_to 'Edit', edit_message_path(message)
-      %td= link_to 'Destroy', message, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td= link_to 'Delete', message, :method => :put
 
 %br
 
-= link_to 'New Message', new_message_path
+/ = link_to 'New Message', new_message_path
