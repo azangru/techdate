@@ -1,4 +1,13 @@
+// homepage images
 
+#homepage_pic, #signin_pic {
+  width: 100%;
+}
+
+#homepage_logo {
+  width: 100px;
+  margin-left: 30%;
+}
 
 // for images on the index page
 
@@ -10,4 +19,11 @@
   // img{
   //   width: 250px;
   // }
+}
+
+// Centering the content on the page
+.container{
+  width: 90%;
+  margin: auto;
+  height: 100%;
 }

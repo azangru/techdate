@@ -1,51 +1,57 @@
-%h2 Welcome to Techdate
+.row
+  .col-md-8
+    =image_tag 'homepage_1.jpg', :id => "homepage_pic"
 
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = devise_error_messages!
+  .col-md-4
+    %h2 Welcome to
+    .row
+      %h1.col-md-2 Techdate
+      =image_tag 'glasses-hearts-logo.png', :id => 'homepage_logo', :class => 'col-md-2'
+    .row
+      %p 
+        At Techdate, we believe everyone should find the key to their value.
+        So what are you waiting for? `git checkout Techdate` now
 
-  / Page one
-  %div#page_1
-    %h3 I want to see...
-    %ul
-      %li
-        = f.label(:interested_in_gender, "Super hacker")
-        = f.select :interested_in_gender, ["men", "women"]
-      %li 
-        = f.label(:interested_in_age_start, "aged")
-        = f.number_field :interested_in_age_start, :min=>18, :max=>100
-        = f.label(:interested_in_age_end, "to")
-        = f.number_field :interested_in_age_end, :min=>18, :max=>100
-      %button#page_1_button Continue
+    = form_for(resource, as: resource_name, url: registration_path(resource_name), role: "form") do |f|
+      = devise_error_messages!
 
-  / Page two
-  %div#page_2{style: "display: none"}
-    %h3 Sign up to view profiles
-    %ul
-      %li
-        = f.label :first_name
-        %br
-        =f.text_field :first_name, autofocus: true
-      %li
-        = f.label :last_name
-        %br
-        = f.text_field :last_name
-      %li
-        = f.label :email
-        %br
-        = f.email_field :email
-      %li
-        = f.label :password
-        %br
-        = f.password_field :password, autocomplete: "off"
-      %li
-        = f.label :password_confirmation
-        %br
-        = f.password_field :password_confirmation, autocomplete: "off"
-      %li
-        = f.label :image
-        %br
-        = f.file_field :image, autocomplete: "off"
-      %li
-        = f.submit "Sign up"
+      / Page one
+      .well
+        #page_1
+          %h4 I want to see...
+          .form-group
+            = f.label(:interested_in_gender, "Super hacker")
+            = f.select :interested_in_gender, ["men", "women"], :selected => "women", :class => "form-control"
+          .form-group 
+            = f.label(:interested_in_age_start, "who are older than")
+            = f.number_field :interested_in_age_start, :min=>18, :max=>100, :class => "form-control", :value => 21
+          .form-group
+            = f.label(:interested_in_age_end, "but younger than")
+            = f.number_field :interested_in_age_end, :min=>18, :max=>100, :class => "form-control", :value => 35
+          %button#page_1_button.btn.btn-default Continue
 
-= render "devise/shared/links"
+        / Page two
+        %div#page_2{style: "display: none"}
+          %h4 Sign up to view profiles
+          .form-group
+            = f.label :first_name
+            =f.text_field :first_name, :class => "form-control", autofocus: true
+          .form-group
+            = f.label :last_name
+            = f.text_field :last_name, :class => "form-control"
+          .form-group
+            = f.label :email
+            = f.email_field :email, :class => "form-control"
+          .form-group
+            = f.label :password
+            = f.password_field :password, :class => "form-control", autocomplete: "off"
+          .form-group
+            = f.label :password_confirmation
+            = f.password_field :password_confirmation, :class => "form-control", autocomplete: "off"
+          .form-group
+            = f.label :image
+            = f.file_field :image, autocomplete: "off"
+          = f.submit "Sign up", :class => "btn.btn-default"
+
+        %span.help-block
+          = link_to "Already a member? Sign in here", new_user_session_path
