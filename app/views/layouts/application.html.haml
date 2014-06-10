@@ -19,7 +19,7 @@
               %li= link_to "Search", root_path(search: true) , :id => "search_form_link"
               %li= link_to "My profile", show_user_profile_path(current_user) 
               %li= link_to "Saved profiles" 
-              %li= link_to "Feed"
+              %li= link_to "Views"
               %li= link_to "Messages", mailbox_type_messages_path("inbox")
 
     - if user_signed_in?
