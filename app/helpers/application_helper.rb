@@ -1,6 +1,6 @@
 module ApplicationHelper
   def short_form_display
-    params[:action] == "search" ? {} : {style: "display: none"}
+    (params[:action] == "search" || params[:search]== "true") ? {} : {style: "display: none"}
   end
 
   def long_form_display
