@@ -3,6 +3,7 @@ class CreateViews < ActiveRecord::Migration
     create_table :views do |t|
       t.integer :viewer_id
       t.integer :profile_id
+      t.boolean :seen, default: false, null: false
 
       t.timestamps
     end

@@ -29,8 +29,12 @@ Techdate::Application.routes.draw do
   end
 
   get '/users/:user_id/profile', to: 'profiles#show', as: :show_user_profile
-  get '/users/:user_id/profile/edit', to: 'profiles#edit', as: :edit_user_profile
-  put 'users/:user_id/profile', to: 'profiles#update', as: :update_user_profile
+
+  get '/profile',       to: 'profiles#show',   as: :show_current_user_profile
+  get '/profile/edit',  to: 'profiles#edit',   as: :edit_current_user_profile
+  put '/profile',       to: 'profiles#update', as: :update_current_user_profile
+  get '/profile/views', to: 'profiles#views',  as: :current_user_profile_views
+
 
   # resources :users do
   #   resources :profiles, except: [:new, :create, :destroy]

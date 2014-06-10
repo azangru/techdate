@@ -13,8 +13,22 @@ class ProfilesController < ApplicationController
   # GET /profiles/1
   # GET /profiles/1.json
   def show
-    @user = User.find(params[:user_id])
+    @user = if params[:user_id]
+      User.find(params[:user_id])
+    else
+      current_user
+    end
+
     @profile = @user.profile
+
+    #here is code for creating a "view" event in the Views table
+    unless current_user.id == @user.id
+      @view = View.new
+      @view.profile_id = @profile.user_id
+      @view.viewer_id = current_user.id
+      @view.save
+    end
+    #end of code relating to the view
 
     respond_to do |format|
       format.html # show.html.erb
@@ -82,4 +96,14 @@ class ProfilesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def views
+    @profile = current_user.try(:profile)
+    @views = @profile.latest_views
+    unseen_ids = @views.select { |v| !v.seen }.map(&:id)
+    if unseen_ids.any?
+      View.where(id: unseen_ids).update_all(seen: true)
+    end
+  end
+
 end

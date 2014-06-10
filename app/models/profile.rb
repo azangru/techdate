@@ -12,4 +12,12 @@ class Profile < ActiveRecord::Base
   # validates :interested_in, presence: true
   # validates :city, presence: true
 
+  def latest_views
+    views.where("created_at > ?", 30.days.ago).order('created_at DESC')
+  end
+
+  def unseen_view_count
+    views.where(seen: false).count
+  end
+
 end

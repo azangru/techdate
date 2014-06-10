@@ -1,5 +1,8 @@
 %p#notice= notice
 
+- if @profile.user == current_user
+  = link_to "View Counts", current_user_profile_views_path
+
 = image_tag(@profile.user.image.url)
 %p
   %b User:
@@ -41,5 +44,5 @@
   %b Children:
   = @profile.children
 
-= link_to 'Edit', edit_user_profile_path(@user)
+= link_to 'Edit', edit_current_user_profile_path
 = link_to 'Send a message', new_user_message_path(@user)

@@ -1,0 +1,4 @@
+- @views.each do |view|
+  %p= view.viewer.full_name
+  %p= time_ago_in_words view.created_at
+  %hr

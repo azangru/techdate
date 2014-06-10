@@ -82,8 +82,9 @@ ActiveRecord::Schema.define(:version => 20140609131953) do
   create_table "views", :force => true do |t|
     t.integer  "viewer_id"
     t.integer  "profile_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.boolean  "seen",       :default => false, :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   add_index "views", ["profile_id"], :name => "index_views_on_profile_id"
