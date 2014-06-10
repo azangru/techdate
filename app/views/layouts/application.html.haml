@@ -33,47 +33,6 @@
     - flash.each do |name, msg|
       = content_tag :div, msg, :id => "flash_#{name}"
 
-    / Search form
-
-    = search_form_for @search, url: search_users_path, html: { method: :post } do |f|
-      #short_search{short_form_display}
-        %p I am looking for...
-        = f.label :profile_gender_eq, "Super hacker"
-        = f.select :profile_gender_eq, ["male", "Female"]
-        = f.label :profile_age_gteq, "aged"
-        = f.number_field :profile_age_gteq, :min=>18, :max=>100
-        = f.label :profile_age_lteq, "to"
-        = f.number_field :profile_age_lteq, :min=>18, :max=>100
-        %br
-        = f.label :interested_in_gender_eq, "who are interested in "
-        = f.select :interested_in_gender_eq, ["men", "women"]
-        = f.label :interested_in_age_start_gteq, "aged"
-        = f.number_field :interested_in_age_start_gteq
-        %button#long_search_button More search fields
-        = f.submit 
-      #long_search{long_form_display}
-        = f.label :profile_city_cont
-        = f.search_field :profile_city_cont
-        %br
-        = f.label :profile_current_occupation_cont
-        = f.search_field :profile_current_occupation_cont
-        %br
-        = f.label :profile_native_human_language_or_profile_other_human_languages_cont
-        = f.search_field :profile_native_human_language_or_profile_other_human_languages_cont
-        %br
-        = f.label :first_name_or_last_name_cont
-        = f.search_field :first_name_or_last_name_cont
-        %br
-        = f.label :profile_interests_cont
-        = f.search_field :profile_interests_cont
-        %br
-        = f.label :profile_children_eq
-        = f.number_field :profile_children_eq
-        %br
-        = f.label :profile_relationship_status_cont_any
-        = select_tag :profile_relationship_status_cont_any, options_for_select(Profile::RELATIONSHIP_STATUS),  multiple: true, size: 7
-        = hidden_field_tag :search_type
-
-        = f.submit 
+    = render 'layouts/search'
 
     = yield
