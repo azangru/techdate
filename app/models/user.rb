@@ -19,7 +19,6 @@ class User < ActiveRecord::Base
   validates :first_name, presence: true
   validates :last_name, presence: true
 
-
 ######### FOR BUILDING A PROFILE ###########
 
   after_create :build_profile

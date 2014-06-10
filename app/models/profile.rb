@@ -4,6 +4,8 @@ class Profile < ActiveRecord::Base
 
   has_many :views
 
+  RELATIONSHIP_STATUS = ["Single", "In a relationship", "It's complicated", "In an open relationship", "Engaged", "In a civil union", "In a domestic partnership", "Married", "Divorced", "Widowed", "Separated"]
+
   # validates :age, presence: true, numericality: true
   # validates :children, numericality: true
   # validates :gender, presence: true

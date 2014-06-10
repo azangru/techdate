@@ -1,7 +1,19 @@
 class UsersController < Devise::RegistrationsController
 
+  GENDER = ["Male", "Female"]
+
   def index
-    @users = User.all
+    unless params[:q].nil?
+      params[:q][:interested_in_age_end_lteq] = params[:q][:interested_in_age_start_gteq]
+    end
+    @search = User.search(params[:q])
+    @users = @search.result.includes(:profile)
+  end
+
+  def search
+    binding.pry
+    index
+    render :index
   end
 
   def create 

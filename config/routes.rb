@@ -6,6 +6,9 @@ Techdate::Application.routes.draw do
 
   devise_scope :user do
     resources :users do  #, only: [:index]
+      collection do
+        match 'search' => 'users#search', via: [:get, :post], as: :search
+      end
       resources :messages
     end
   end
