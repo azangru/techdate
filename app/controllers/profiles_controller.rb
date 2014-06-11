@@ -20,6 +20,7 @@ class ProfilesController < ApplicationController
     end
 
     @profile = @user.profile
+    authorize! :show, @profile
 
     #here is code for creating a "view" event in the Views table
     unless current_user.id == @user.id
@@ -57,6 +58,7 @@ class ProfilesController < ApplicationController
   # POST /profiles.json
   def create
     @profile = Profile.new(params[:profile])
+    authorize! :update, @profile
 
     respond_to do |format|
       if @profile.save
@@ -74,6 +76,7 @@ class ProfilesController < ApplicationController
   def update
     @user = current_user
     @profile = @user.profile
+    authorize! :update, @profile
 
     respond_to do |format|
       if @profile.update_attributes(params[:profile])

@@ -20,6 +20,8 @@ class Profile < ActiveRecord::Base
 
   has_many :views
 
+  after_update :update_user_role
+
   RELATIONSHIP_STATUS = ["Single", "In a relationship", "It's complicated", "In an open relationship", "Engaged", "In a civil union", "In a domestic partnership", "Married", "Divorced", "Widowed", "Separated"]
 
   # validates :age, presence: true, numericality: true
@@ -28,6 +30,23 @@ class Profile < ActiveRecord::Base
   # validates :interested_in, presence: true
   # validates :city, presence: true
 
+  def update_user_role
+    if user.present? && user.role != "admin"
+      role = attributes.values.any? {|a|a.blank?}? "basic_user" : "premium_user"
+      user.update_attribute(:role, role)
+    end
+  end
+
+  def update_user_role
+    if user.present? && user.role != "admin"
+      if user.image? && attributes.values.all? {|a| !a.blank?}
+        user.update_attribute(:role, "premium_user")
+      else
+        user.update_attribute(:role, "basic_user")
+      end
+    end
+  end
+  
   def latest_views # working method, which Michael says is rubbish, because it contains an ugly SQL statement; research how to do this with Active Record finders (when have time)
     View.find_by_sql "SELECT viewer_id, seen, MAX(created_at) as created_at FROM views WHERE profile_id = #{id} GROUP BY viewer_id, seen"
   end
@@ -36,7 +55,6 @@ class Profile < ActiveRecord::Base
     results = View.find_by_sql("SELECT count(*) as record_count FROM views WHERE profile_id = #{id} and seen = false GROUP BY viewer_id, seen")
     results.first.try(:record_count).to_i
   end
-
 
 
 end
