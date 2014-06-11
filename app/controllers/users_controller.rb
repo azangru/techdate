@@ -9,7 +9,7 @@ class UsersController < Devise::RegistrationsController
       render :new, layout: "home_layout"
     else
       unless params[:q].nil?
-        params[:q][:interested_in_age_end_lteq] = params[:q][:interested_in_age_start_gteq]
+        params[:q][:profile_interested_in_age_end_lteq] = params[:q][:profile_interested_in_age_start_gteq]
       end
       @search = User.search(params[:q])
       @users = @search.result.includes(:profile)
@@ -23,8 +23,9 @@ class UsersController < Devise::RegistrationsController
 
   def create 
     super
-    @user.role = "free_user"
-    @user.save!
+
+    # make sure nested attributes for form are used
+    @user.update_attributes(params[:user].merge(role: "free_user"))
   end
 
 end

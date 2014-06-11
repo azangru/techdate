@@ -6,7 +6,18 @@ class User < ActiveRecord::Base
          :confirmable, :timeoutable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :image, :paid, :role, :remote_image_url, :interested_in_gender, :interested_in_age_start, :interested_in_age_end
+  attr_accessible :email,
+                  :password,
+                  :password_confirmation,
+                  :remember_me,
+                  :first_name,
+                  :last_name,
+                  :image,
+                  :paid,
+                  :role,
+                  :remote_image_url,
+                  :profile_attributes
+
   # attr_accessible :title, :body
 
   has_one :profile
@@ -19,13 +30,20 @@ class User < ActiveRecord::Base
   validates :first_name, presence: true
   validates :last_name, presence: true
 
+  accepts_nested_attributes_for :profile
+
+  GENDER = ["Male", "Female"]
+  INTERESTED_IN_GENDER = ["Men", "Women"]
+
 ######### FOR BUILDING A PROFILE ###########
 
-  after_create :build_profile
+  after_create :create_profile
 
-  def build_profile
-    Profile.create(user: self)
-  end
+  # after_create :build_profile
+
+  # def build_profile
+  #   Profile.create(user: self)
+  # end
 ############################################
 
   def full_name

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140609131953) do
+ActiveRecord::Schema.define(:version => 20140611100730) do
 
   create_table "messages", :force => true do |t|
     t.integer  "sender_id"
@@ -33,7 +33,6 @@ ActiveRecord::Schema.define(:version => 20140609131953) do
     t.text     "bio"
     t.integer  "age"
     t.string   "gender"
-    t.string   "interested_in"
     t.string   "city"
     t.string   "current_occupation"
     t.string   "programming_languages"
@@ -42,19 +41,22 @@ ActiveRecord::Schema.define(:version => 20140609131953) do
     t.text     "interests"
     t.string   "relationship_status"
     t.integer  "children"
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+    t.string   "interested_in_gender"
+    t.integer  "interested_in_age_start"
+    t.integer  "interested_in_age_end"
   end
 
   add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"
 
   create_table "users", :force => true do |t|
-    t.string   "email",                   :default => "", :null => false
-    t.string   "encrypted_password",      :default => "", :null => false
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",           :default => 0,  :null => false
+    t.integer  "sign_in_count",          :default => 0,  :null => false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -63,16 +65,13 @@ ActiveRecord::Schema.define(:version => 20140609131953) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.datetime "created_at",                              :null => false
-    t.datetime "updated_at",                              :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
     t.string   "first_name"
     t.string   "last_name"
     t.string   "role"
     t.string   "image"
     t.boolean  "paid"
-    t.string   "interested_in_gender"
-    t.integer  "interested_in_age_start"
-    t.integer  "interested_in_age_end"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
@@ -82,9 +81,8 @@ ActiveRecord::Schema.define(:version => 20140609131953) do
   create_table "views", :force => true do |t|
     t.integer  "viewer_id"
     t.integer  "profile_id"
-    t.boolean  "seen",       :default => false, :null => false
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "views", ["profile_id"], :name => "index_views_on_profile_id"

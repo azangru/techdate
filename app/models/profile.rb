@@ -1,6 +1,22 @@
 class Profile < ActiveRecord::Base
   belongs_to :user
-  attr_accessible :user_id, :age, :bio, :children, :city, :current_occupation, :gender, :interested_in, :interests, :native_human_language, :other_human_languages, :programming_languages, :relationship_status, :user
+  attr_accessible :user_id,
+                  :age,
+                  :bio,
+                  :children,
+                  :city,
+                  :current_occupation,
+                  :gender,
+                  :interested_in,
+                  :interests,
+                  :native_human_language,
+                  :other_human_languages,
+                  :programming_languages,
+                  :relationship_status,
+                  :user, 
+                  :interested_in_gender, 
+                  :interested_in_age_start, 
+                  :interested_in_age_end
 
   has_many :views
 

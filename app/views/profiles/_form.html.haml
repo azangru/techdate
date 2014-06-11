@@ -6,44 +6,48 @@
         - @profile.errors.full_messages.each do |msg|
           %li= msg
 
-  / .field
-  /   = f.label :user
-  /   = f.text_field :user
-  .field
+  .form-group
     = f.label :bio
-    = f.text_area :bio
-  .field
+    = f.text_area :bio, :class => "form-control", :rows => 9
+  .form-group
     = f.label :age
-    = f.number_field :age
-  .field
+    = f.number_field :age, :class => "form-control"
+  .form-group
     = f.label :gender
-    = f.text_field :gender
-  .field
-    = f.label :interested_in
-    = f.text_field :interested_in
-  .field
+    = f.select :gender, options_for_select(User::GENDER), :class => "form-control"
+  .form-group
     = f.label :city
-    = f.text_field :city
-  .field
+    = f.text_field :city, :class => "form-control"
+  .form-group
     = f.label :current_occupation
-    = f.text_field :current_occupation
-  .field
+    = f.text_field :current_occupation, :class => "form-control"
+  .form-group
     = f.label :programming_languages
-    = f.text_field :programming_languages
-  .field
+    = f.text_field :programming_languages, :class => "form-control"
+  .form-group
     = f.label :native_human_language
-    = f.text_field :native_human_language
-  .field
+    = f.text_field :native_human_language, :class => "form-control"
+  .form-group
     = f.label :other_human_languages
-    = f.text_field :other_human_languages
-  .field
+    = f.text_field :other_human_languages, :class => "form-control"
+  .form-group
     = f.label :interests
-    = f.text_area :interests
-  .field
+    = f.text_area :interests, :class => "form-control", :rows => 3
+  .form-group
     = f.label :relationship_status
-    = f.text_field :relationship_status
-  .field
+    = f.select :relationship_status, options_for_select(Profile::RELATIONSHIP_STATUS), :class => "form-control"
+  .form-group
     = f.label :children
-    = f.number_field :children
+    = f.number_field :children, :class => "form-control"
+  / = f.fields_for @user do |u|
+  /   .form-group
+  /     = u.label :interested_in_gender
+  /     = u.select :interested_in_gender, options_for_select(User::INTERESTED_IN_GENDER), :class => "form-control"
+  /   .form-group
+  /     = u.label :interested_in_age_start, "older than"
+  /     = u.number_field :interested_in_age_start, :min=>18, :max=>100, :class => "form-control"
+  /   .form-group
+  /     = u.label :interested_in_age_end, "younger than"
+  /     = u.number_field :interested_in_age_end, :min=>18, :max=>100, :class => "form-control"
   .actions
     = f.submit 'Save'

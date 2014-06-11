@@ -19,20 +19,28 @@
       .well
         #page_1
           %h4 I want to see...
-          .form-group
-            = f.label(:interested_in_gender, "Super hacker")
-            = f.select :interested_in_gender, ["men", "women"], :selected => "women", :class => "form-control"
-          .form-group 
-            = f.label(:interested_in_age_start, "who are older than")
-            = f.number_field :interested_in_age_start, :min=>18, :max=>100, :class => "form-control", :value => 21
-          .form-group
-            = f.label(:interested_in_age_end, "but younger than")
-            = f.number_field :interested_in_age_end, :min=>18, :max=>100, :class => "form-control", :value => 35
+          = f.fields_for :profile_attributes do |p|
+            .form-group
+              = p.label(:interested_in_gender, "Super hacker")
+              = p.select :interested_in_gender, options_for_select(User::INTERESTED_IN_GENDER), :selected => "Women", :class => "form-control"
+            .form-group 
+              = p.label(:interested_in_age_start, "who are older than")
+              = p.number_field :interested_in_age_start, :min=>18, :max=>100, :class => "form-control", :value => 21
+            .form-group
+              = p.label(:interested_in_age_end, "but younger than")
+              = p.number_field :interested_in_age_end, :min=>18, :max=>100, :class => "form-control", :value => 35
           %button#page_1_button.btn.btn-default Continue
 
         / Page two
         %div#page_2{style: "display: none"}
           %h4 Sign up to view profiles
+          = f.fields_for :profile_attributes do |p|
+            .form-group
+              = p.label(:gender, "I am a ")
+              = p.select :gender, options_for_select(User::GENDER), :selected => "Male", :class => "form-control"
+            .form-group
+              = p.label(:age, "aged")
+              = p.number_field :interested_in_age_start, :min=>18, :max=>100, :class => "form-control", :value => 25
           .form-group
             = f.label :first_name
             =f.text_field :first_name, :class => "form-control", autofocus: true

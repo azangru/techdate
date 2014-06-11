@@ -10,10 +10,10 @@
     = f.label :profile_age_lteq, "to"
     = f.number_field :profile_age_lteq, :min=>18, :max=>100
     %br
-    = f.label :interested_in_gender_eq, "who are interested in "
-    = f.select :interested_in_gender_eq, ["men", "women"]
-    = f.label :interested_in_age_start_gteq, "aged"
-    = f.number_field :interested_in_age_start_gteq
+    = f.label :profile_interested_in_gender_eq, "who are interested in "
+    = f.select :profile_interested_in_gender_eq, ["Men", "women"]
+    = f.label :profile_interested_in_age_start_gteq, "aged"
+    = f.number_field :profile_interested_in_age_start_gteq
     %button#long_search_button More search fields
     = f.submit 
   #long_search{long_form_display}
