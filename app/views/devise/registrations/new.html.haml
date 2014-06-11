@@ -40,7 +40,7 @@
               = p.select :gender, options_for_select(User::GENDER), :selected => "Male", :class => "form-control"
             .form-group
               = p.label(:age, "aged")
-              = p.number_field :interested_in_age_start, :min=>18, :max=>100, :class => "form-control", :value => 25
+              = p.number_field :age, :min=>18, :max=>100, :class => "form-control", :value => 25
           .form-group
             = f.label :first_name
             =f.text_field :first_name, :class => "form-control", autofocus: true
