@@ -72,7 +72,6 @@ class ProfilesController < ApplicationController
   # PUT /profiles/1
   # PUT /profiles/1.json
   def update
-    binding.pry
     @user = current_user
     @profile = @user.profile
 
