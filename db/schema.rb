@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(:version => 20140609131953) do
     t.datetime "updated_at",                           :null => false
     t.boolean  "remove_from_inbox", :default => false
     t.boolean  "remove_from_sent",  :default => false
+    t.boolean  "seen",              :default => false
   end
 
   add_index "messages", ["recipient_id"], :name => "index_messages_on_recipient_id"

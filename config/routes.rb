@@ -15,6 +15,9 @@ Techdate::Application.routes.draw do
     #   get :inbox
     #   get :sent
     # end
+    collection do
+      get :unseen
+    end
   end
 
   devise_scope :user do

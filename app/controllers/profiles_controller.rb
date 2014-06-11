@@ -104,6 +104,10 @@ class ProfilesController < ApplicationController
     if unseen_ids.any?
       View.where(id: unseen_ids).update_all(seen: true)
     end
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @views }
+    end
   end
 
 end

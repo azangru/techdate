@@ -12,7 +12,18 @@ class MessagesController < ApplicationController
       raise ArgumentError
     end
     @type = "inbox"
-    render :index
+    #### making the messages "seen" ###
+    unseen_ids = @messages.select { |m| !m.seen }.map(&:id)
+    if unseen_ids.any?
+      Message.where(id: unseen_ids).update_all(seen: true)
+    end
+    #### finished making the messages "seen" ###
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { 
+        render json: @messages 
+      }
+    end
   end
 
   # GET /messages/sent
@@ -22,6 +33,11 @@ class MessagesController < ApplicationController
   #   render :index
   # end
 
+
+  def unseen
+    messages = current_user.received_messages.where(seen: false)
+    render json: messages
+  end
 
   # GET /users/:user_id/messages/new
   # GET /users/:user_id/messages/new.json

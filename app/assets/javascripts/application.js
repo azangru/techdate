@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+// Loads underscore
+//= require underscore.js
 // Loads all Bootstrap javascripts
 //= require bootstrap
 //= require script

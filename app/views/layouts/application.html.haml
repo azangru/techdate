@@ -21,7 +21,7 @@
               %li= link_to "My profile", show_user_profile_path(current_user) 
               %li= link_to "Saved profiles" 
               %li= link_to "Views"
-              %li= link_to "Messages", mailbox_type_messages_path("inbox")
+              %li= link_to "Messages ", mailbox_type_messages_path("inbox"), id: "navbar-messages-link"
 
     - if user_signed_in?
       You are logged in as #{current_user.email}
