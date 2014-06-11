@@ -1,8 +1,6 @@
 class UsersController < Devise::RegistrationsController
   before_filter :authenticate_user!, only: [:index]
 
-  GENDER = ["Male", "Female"]
-
   def index
     unless user_signed_in?
       @user = User.new

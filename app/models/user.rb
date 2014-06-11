@@ -32,8 +32,8 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :profile
 
-  GENDER = ["Male", "Female"]
-  INTERESTED_IN_GENDER = ["Men", "Women"]
+  GENDER = ["male", "female"]
+  INTERESTED_IN_GENDER = ["men", "women"]
 
 ######### FOR BUILDING A PROFILE ###########
 
