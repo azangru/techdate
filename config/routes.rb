@@ -37,7 +37,7 @@ Techdate::Application.routes.draw do
   get '/profile/edit',  to: 'profiles#edit',   as: :edit_current_user_profile
   put '/profile',       to: 'profiles#update', as: :update_current_user_profile
   get '/profile/views', to: 'profiles#views',  as: :current_user_profile_views
-
+  get '/profile/views/unseen', to: 'profiles#unseen_views', as: :current_user_profile_unseen_views
 
   # resources :users do
   #   resources :profiles, except: [:new, :create, :destroy]

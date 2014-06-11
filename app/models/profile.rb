@@ -12,14 +12,15 @@ class Profile < ActiveRecord::Base
   # validates :interested_in, presence: true
   # validates :city, presence: true
 
-  def latest_views(profile_id)
-    View.find_by_sql "SELECT viewer_id, seen, MAX(created_at) as created_at FROM views WHERE profile_id = #{profile_id} GROUP BY viewer_id, seen"
-    #ActiveRecord::Base.connection.execute(query)
-    # views.where("created_at > ?", 30.days.ago) #.group_by(&:viewer_id).values #.order('created_at DESC')
+  def latest_views # working method, which Michael says is rubbish, because it contains an ugly SQL statement; research how to do this with Active Record finders (when have time)
+    View.find_by_sql "SELECT viewer_id, seen, MAX(created_at) as created_at FROM views WHERE profile_id = #{id} GROUP BY viewer_id, seen"
   end
 
-  def unseen_view_count
-    views.where(seen: false).count
+  def latest_unseen_views_count # working method with an ugly SQL statement; research how to do this with Active Record finders (later)
+    results = View.find_by_sql("SELECT count(*) as record_count FROM views WHERE profile_id = #{id} and seen = false GROUP BY viewer_id, seen")
+    results.first.try(:record_count).to_i
   end
+
+
 
 end

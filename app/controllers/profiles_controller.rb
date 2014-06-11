@@ -97,9 +97,11 @@ class ProfilesController < ApplicationController
     end
   end
 
+
+  ############ CODE FOR VIEWS ################ 
   def views
     @profile = current_user.try(:profile)
-    @views = @profile.latest_views(@profile.id)
+    @views = @profile.latest_views
     unseen_ids = @views.select { |v| !v.seen }.map(&:id)
     if unseen_ids.any?
       View.where(id: unseen_ids).update_all(seen: true)
@@ -109,5 +111,10 @@ class ProfilesController < ApplicationController
       format.json { render json: @views }
     end
   end
+
+  def unseen_views
+    render json: current_user.profile.latest_unseen_views_count   
+  end
+  ############################################
 
 end

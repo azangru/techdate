@@ -32,18 +32,16 @@ $ ->
       $("#navbar-messages-link").text "Messages(#{unseen_count})"
 
   getUnseenViewCount = ->
-    count = 0
-    $.getJSON("/profile/views").done (data) ->
-      count = _(data).where({seen: false}).length
-    count
-  
-  printUnseenMessages = ->
-    new_messages = getUnseenMessageCount()
-    $("#testing-div").append "#{new_messages} new messages"
+    $.getJSON("/profile/views/unseen").done (data) ->
+      unseen_count = _(data).where({seen: false}).length
+      $("#navbar-views-link").text "Views(#{unseen_count})"
 
-  printUnseenViews = ->
-    new_views = getUnseenViewCount()
-    $("#testing-div").append "#{new_views} new views"
+  # getUnseenViewCount = ->
+  #   count = 0
+  #   $.getJSON("/profile/views").done (data) ->
+  #     count = _(data).where({seen: false}).length
+  #   count
+
 
   printUpdater = ->
     setInterval(printUnseenMessages, 3000)
@@ -53,5 +51,7 @@ $ ->
 
   setInterval ->
     getUnseenMessageCount()
+    getUnseenViewCount()
   , 3000
   getUnseenMessageCount()
+  getUnseenViewCount()
