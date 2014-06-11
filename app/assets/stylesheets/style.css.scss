@@ -36,3 +36,39 @@
 .select-form-inline {
   margin-top: 7px;
 }
+
+// Profile page styling
+.photo-sizing-profile {
+  width: 300px;
+}
+
+.userpic {
+  width: 100%;
+}
+
+.top-buffer { 
+  margin-top:20px; 
+}
+
+.remove-top-margin {
+  margin-top: 0px;
+  margin-left: -15px;
+}
+
+.bio-text {
+  text-align: justify;
+}
+
+.right-profile-box {
+  padding: 0px;
+}
+
+// New message styling
+
+.photo-sizing-message {
+  width: 250px;
+}
+
+.move-heading-left {
+  margin-left: -15px
+}
