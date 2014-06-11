@@ -9,6 +9,7 @@
   %body
     / # if params[:action]
     / # = render partial: "navbar" if my_helper_says_true
+
     - if user_signed_in?
       = render 'layouts/navbar'
       .container.login_message
