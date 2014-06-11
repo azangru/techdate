@@ -44,6 +44,7 @@ class MessagesController < ApplicationController
   def new
     @message = Message.new
     @user = params[:user_id]
+    authorize! :create, Message
 
     respond_to do |format|
       format.html # new.html.erb
@@ -55,6 +56,7 @@ class MessagesController < ApplicationController
   # POST /users/:user_id/messages.json
   def create
     @message = Message.new(params[:message])
+    authorize! :create, Message
     @message.recipient_id = params[:user_id]
     @message.sender_id = current_user.id
     @message.read = false

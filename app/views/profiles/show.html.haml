@@ -44,8 +44,10 @@
   %b Children:
   = @profile.children
 
-= link_to 'Edit', edit_current_user_profile_path
-= link_to 'Send a message', new_user_message_path(@user)
+- if can? :update, @profile
+  = link_to 'Edit', edit_current_user_profile_path
+- if can? :create, Message
+  = link_to 'Send a message', new_user_message_path(@user)
 
 
 #testing-div

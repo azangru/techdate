@@ -28,7 +28,7 @@ u2 = User.create!(
   last_name: "Paltrow",
   password: "password",
   email: "gwyneth@example.com",
-  role: "paid_user",
+  role: "premium_user",
   remote_image_url: "http://24.media.tumblr.com/f85d179602a0f70ea6bedf6156b721b5/tumblr_mkqcjn0xHx1s7aky5o1_r1_1280.jpg",
   paid: true
 )
@@ -45,7 +45,9 @@ u2.profile.update_attributes(
   other_human_languages: "French",
   interests: "food, dancing, movies, theatre",
   relationship_status: "divorced",
-  children: 1
+  children: 1,
+  interested_in_age_start: 25,
+  interested_in_age_end: 35
 )
 
 
@@ -54,7 +56,7 @@ u3 = User.create!(
   last_name: "Johansson",
   password: "password",
   email: "scarlett@example.com",
-  role: "paid_user",
+  role: "premium_user",
   remote_image_url: "http://37.media.tumblr.com/77ea19355786597f3f967c72f8ba0c6d/tumblr_n09td4gc9Q1s7aky5o1_1280.jpg",
   paid: true
 )
@@ -79,7 +81,7 @@ u4 = User.create!(
   last_name: "Kidman",
   password: "password",
   email: "nicole@example.com",
-  role: "paid_user",
+  role: "premium_user",
   remote_image_url: "http://24.media.tumblr.com/7bd18a20474763993b033dfd1076642c/tumblr_mxedyzB5DB1s7aky5o1_1280.jpg",
   paid: true
 )
@@ -105,7 +107,7 @@ u5 = User.create!(
   last_name: "Stefani",
   password: "password",
   email: "gwen@example.com",
-  role: "paid_user",
+  role: "premium_user",
   remote_image_url: "http://24.media.tumblr.com/69d6bed2745168ab43e4282dfe864595/tumblr_mv8fq89cfh1s7aky5o1_1280.jpg",
   paid: true
 )
@@ -129,7 +131,7 @@ u6 = User.create!(
   last_name: "Hudson",
   password: "password",
   email: "kate@example.com",
-  role: "paid_user",
+  role: "premium_user",
   remote_image_url: "http://37.media.tumblr.com/7f28272e6f278c24f9af483cbfbbd84c/tumblr_mv8fh6Upbv1s7aky5o1_1280.jpg",
   paid: true
 )
@@ -153,7 +155,7 @@ u7 = User.create!(
   last_name: "Sharapova",
   password: "password",
   email: "maria@example.com",
-  role: "paid_user",
+  role: "premium_user",
   remote_image_url: "http://37.media.tumblr.com/47a2c8c524cf7f976699682636745578/tumblr_mpzdn0u5Z51s7aky5o1_1280.jpg",
   paid: true
 )
@@ -177,7 +179,7 @@ u8 = User.create!(
   last_name: "Doe",
   password: "password",
   email: "jane@example.com",
-  role: "paid_user",
+  role: "premium_user",
   remote_image_url: "http://31.media.tumblr.com/86054abe528ed749459ebb74bda5b0ae/tumblr_muibvt1I2e1s7aky5o1_1280.jpg",
   paid: true
 )
@@ -201,7 +203,7 @@ u9 = User.create!(
   last_name: "Diaz",
   password: "password",
   email: "cameron@example.com",
-  role: "paid_user",
+  role: "premium_user",
   remote_image_url: "http://24.media.tumblr.com/96c147c8ebe8facd5f573db0b9565a0d/tumblr_mpjfsbrBhS1s7aky5o1_1280.jpg",
   paid: true
 )
@@ -225,7 +227,7 @@ u10 = User.create!(
   last_name: "Blanchett",
   password: "password",
   email: "cate@example.com",
-  role: "paid_user",
+  role: "premium_user",
   remote_image_url: "http://31.media.tumblr.com/dad9b243f609bce60bffc7e8ce2ca1f7/tumblr_mohj4wzQG41s7aky5o1_1280.jpg",
   paid: true
 )
@@ -249,7 +251,7 @@ u11 = User.create!(
   last_name: "Theron",
   password: "password",
   email: "charlize@example.com",
-  role: "paid_user",
+  role: "premium_user",
   remote_image_url: "http://24.media.tumblr.com/399ab0759904b869f4ff0d8e71c2eed2/tumblr_mmr1anZ0FT1s7aky5o1_1280.jpg",
   paid: true
 )
@@ -273,7 +275,7 @@ u12 = User.create!(
   last_name: "Hawkins",
   password: "password",
   email: "sally@example.com",
-  role: "paid_user",
+  role: "premium_user",
   remote_image_url: "http://37.media.tumblr.com/5c865d9d42f9c85ee2692f995a4e1726/tumblr_mk21holX7N1s7aky5o1_r1_1280.jpg",
   paid: true
 )
