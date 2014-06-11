@@ -1,0 +1,30 @@
+.row
+  .col-md-8
+    =image_tag 'hello_world.jpg', :id => "signin_pic"
+
+  .col-md-4
+    %h2 Welcome to
+    .row
+      %h1.col-md-2 Techdate
+      =image_tag 'glasses-hearts-logo.png', :id => 'homepage_logo', :class => 'col-md-2'
+    .row
+      %p 
+        At Techdate, we believe everyone should find the key to their value.
+        So what are you waiting for? `git checkout Techdate` now
+
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .well
+        %h4 Sign in here
+        .form-group
+          = f.label :email
+          = f.email_field :email, autofocus: true, :class => "form-control"
+        .form-group
+          = f.label :password
+          = f.password_field :password, autocomplete: "off", :class => "form-control"
+        - if devise_mapping.rememberable?
+          = f.check_box :remember_me
+          = f.label :remember_me
+        %br
+        = f.submit "Sign in", :class => "btn.btn-default"
+        %br
+        = render "devise/shared/links"

@@ -6,7 +6,7 @@ class UsersController < Devise::RegistrationsController
   def index
     unless user_signed_in?
       @user = User.new
-      render :new
+      render :new, layout: "home_layout"
     else
       unless params[:q].nil?
         params[:q][:interested_in_age_end_lteq] = params[:q][:interested_in_age_start_gteq]
