@@ -99,7 +99,7 @@ class ProfilesController < ApplicationController
 
   def views
     @profile = current_user.try(:profile)
-    @views = @profile.latest_views
+    @views = @profile.latest_views(@profile.id)
     unseen_ids = @views.select { |v| !v.seen }.map(&:id)
     if unseen_ids.any?
       View.where(id: unseen_ids).update_all(seen: true)
