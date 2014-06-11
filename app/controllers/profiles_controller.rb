@@ -112,7 +112,7 @@ class ProfilesController < ApplicationController
       format.json { render json: @views }
     end
   end
-
+  
   def unseen_views
     render json: current_user.profile.latest_unseen_views_count   
   end
