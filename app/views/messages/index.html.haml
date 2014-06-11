@@ -1,16 +1,24 @@
-%h1 Listing messages
+%h1 Messages
 
-%table
+%ul.nav.nav-tabs
+  %li.active
+    = link_to params[:type].capitalize, mailbox_type_messages_path(params[:type])
+  %li
+    = link_to other_mailbox.capitalize, mailbox_type_messages_path(other_mailbox)
+
+%table.table.table-hover
   %tr
     -if params[:type] == "inbox"
       %th From:
     -if params[:type] == "sent"
       %th To:
-    %th Title
-    %th Body
-    %th Read
-    %th
-  = params[:type]
+    %th Subject
+    - if params[:type] == "inbox"
+      %th Received at
+    - if params[:type] == "sent"
+      %th Sent at
+    %th 
+
   - @messages.each do |message|
     %tr
       -if params[:type] == "inbox"
@@ -18,10 +26,5 @@
       -if params[:type] == "sent"
         %td= message.recipient.full_name
       %td= link_to message.title, message
-      %td= message.body
-      %td= message.read
+      %td= message.created_at
       %td= link_to 'Delete', message, :method => :put
-
-%br
-
-/ = link_to 'New Message', new_message_path
