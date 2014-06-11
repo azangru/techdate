@@ -39,15 +39,5 @@
   .form-group
     = f.label :children
     = f.number_field :children, :class => "form-control"
-  / = f.fields_for @user do |u|
-  /   .form-group
-  /     = u.label :interested_in_gender
-  /     = u.select :interested_in_gender, options_for_select(User::INTERESTED_IN_GENDER), :class => "form-control"
-  /   .form-group
-  /     = u.label :interested_in_age_start, "older than"
-  /     = u.number_field :interested_in_age_start, :min=>18, :max=>100, :class => "form-control"
-  /   .form-group
-  /     = u.label :interested_in_age_end, "younger than"
-  /     = u.number_field :interested_in_age_end, :min=>18, :max=>100, :class => "form-control"
   .actions
     = f.submit 'Save'

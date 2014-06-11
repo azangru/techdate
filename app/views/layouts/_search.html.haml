@@ -1,42 +1,53 @@
 / Search form
 
-= search_form_for @search, url: search_users_path, html: { method: :post } do |f|
+= search_form_for @search, url: search_users_path, html: { method: :post }, :class => "form-horizontal" do |f|
   #short_search{short_form_display}
-    %p I am looking for...
-    = f.label :profile_gender_eq, "Super hacker"
-    = f.select :profile_gender_eq, ["male", "Female"]
-    = f.label :profile_age_gteq, "aged"
-    = f.number_field :profile_age_gteq, :min=>18, :max=>100
-    = f.label :profile_age_lteq, "to"
-    = f.number_field :profile_age_lteq, :min=>18, :max=>100
+    %h4 I am looking for...
+    .form-group
+      = f.label :profile_gender_eq, "Super hacker", :class => "col-sm-2 control-label"
+      .col-sm-1.select-form-inline
+        = f.select :profile_gender_eq, options_for_select(User::INTERESTED_IN_GENDER), :class => "form-control"
+      = f.label :profile_age_gteq, "aged", :class => "col-sm-1 control-label"
+      .col-sm-1
+        = f.number_field :profile_age_gteq, :min=>18, :max=>100, :class => "form-control"
+      = f.label :profile_age_lteq, "to", :class => "col-sm-1 control-label"
+      .col-sm-1
+        = f.number_field :profile_age_lteq, :min=>18, :max=>100, :class => "form-control"
+      .col-sm-6
+    .form-group
+      = label :search_match_type, "Only show people interested in people like me", :class => "col-sm-4 control-label"
+      = check_box_tag :search_match_type
+    / .form-group
+    /   = f.label :profile_interested_in_gender_eq, "who are interested in "
+    /   = f.select :profile_interested_in_gender_eq, options_for_select(User::INTERESTED_IN_GENDER), :class => "form-control"
+    / .form-group
+    /   = f.label :profile_interested_in_age_start_gteq, "aged"
+    /   = f.number_field :profile_interested_in_age_start_gteq, :class => "form-control"
+    %button#long_search_button.btn.btn-default More search fields
     %br
-    = f.label :profile_interested_in_gender_eq, "who are interested in "
-    = f.select :profile_interested_in_gender_eq, ["Men", "women"]
-    = f.label :profile_interested_in_age_start_gteq, "aged"
-    = f.number_field :profile_interested_in_age_start_gteq
-    %button#long_search_button More search fields
-    = f.submit 
+    = f.submit "Search", :class => "btn btn-default"
   #long_search{long_form_display}
-    = f.label :profile_city_cont
-    = f.search_field :profile_city_cont
-    %br
-    = f.label :profile_current_occupation_cont
-    = f.search_field :profile_current_occupation_cont
-    %br
-    = f.label :profile_native_human_language_or_profile_other_human_languages_cont
-    = f.search_field :profile_native_human_language_or_profile_other_human_languages_cont
-    %br
-    = f.label :first_name_or_last_name_cont
-    = f.search_field :first_name_or_last_name_cont
-    %br
-    = f.label :profile_interests_cont
-    = f.search_field :profile_interests_cont
-    %br
-    = f.label :profile_children_eq
-    = f.number_field :profile_children_eq
-    %br
-    = f.label :profile_relationship_status_cont_any
-    = select_tag :profile_relationship_status_cont_any, options_for_select(Profile::RELATIONSHIP_STATUS),  multiple: true, size: 7
+    .form-group
+      = f.label :profile_city_cont
+      = f.search_field :profile_city_cont, :class => "form-control"
+    .form-group
+      = f.label :profile_current_occupation_cont
+      = f.search_field :profile_current_occupation_cont, :class => "form-control"
+    .form-group
+      = f.label :profile_native_human_language_or_profile_other_human_languages_cont
+      = f.search_field :profile_native_human_language_or_profile_other_human_languages_cont, :class => "form-control"
+    .form-group
+      = f.label :first_name_or_last_name_cont
+      = f.search_field :first_name_or_last_name_cont, :class => "form-control"
+    .form-group
+      = f.label :profile_interests_cont
+      = f.search_field :profile_interests_cont, :class => "form-control"
+    .form-group
+      = f.label :profile_children_eq
+      = f.number_field :profile_children_eq, :class => "form-control"
+    .form-group
+      = f.label :profile_relationship_status_cont_any
+      = select_tag :profile_relationship_status_cont_any, options_for_select(Profile::RELATIONSHIP_STATUS),  multiple: true, size: 7, :class => "form-control"
     = hidden_field_tag :search_type
 
-    = f.submit 
+    = f.submit "Search", :class => "btn btn-default"

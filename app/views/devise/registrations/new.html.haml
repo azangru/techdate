@@ -59,7 +59,7 @@
           .form-group
             = f.label :image
             = f.file_field :image, autocomplete: "off"
-          = f.submit "Sign up", :class => "btn.btn-default"
+          = f.submit "Sign up", :class => "btn btn-default"
 
         %span.help-block
           = link_to "Already a member? Sign in here", new_user_session_path
