@@ -57,7 +57,7 @@ module Techdate
     config.assets.enabled = true
 
     #Added this line for Heroku
-    config.assets.initialize_on_precompile=false
+    config.assets.initialize_on_precompile = false
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
