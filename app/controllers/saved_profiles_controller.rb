@@ -17,6 +17,7 @@ class SavedProfilesController < ApplicationController
     @profile = Profile.find(user_id = params[:user_id])
     @saved_profile.profile_id = @profile.id
     @saved_profile.saver_id = current_user.id
+    authorize! :create, SavedProfile
 
     respond_to do |format|
       if @saved_profile.save
