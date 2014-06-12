@@ -16,7 +16,7 @@
       .col-sm-6
     .form-group
       = label :search_match_type, "Only show people interested in people like me", :class => "col-sm-4 control-label"
-      = check_box_tag :search_match_type
+      = check_box_tag :search_match_type, 1, :checked => true
     / .form-group
     /   = f.label :profile_interested_in_gender_eq, "who are interested in "
     /   = f.select :profile_interested_in_gender_eq, options_for_select(User::INTERESTED_IN_GENDER), :class => "form-control"
