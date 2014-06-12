@@ -57,8 +57,9 @@ $ ->
   # # printUpdater()
 
   setInterval ->
-    getUnseenMessageCount()
-    getUnseenViewCount()
+    if window.current_user
+      getUnseenMessageCount()
+      getUnseenViewCount()
   , 3000
   getUnseenMessageCount()
   getUnseenViewCount()

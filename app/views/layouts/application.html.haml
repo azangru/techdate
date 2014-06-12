@@ -6,6 +6,7 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
     = favicon_link_tag 'techdate_favicon.ico'
+    = render partial: "layouts/js_current_user"
   %body
     / # if params[:action]
     / # = render partial: "navbar" if my_helper_says_true
