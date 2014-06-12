@@ -544,4 +544,4 @@ m1 = Message.create!(
   body: "Hello! Welcome to the TechDate site. We are so glad you decided to join!"
 )
 
-User.all.each { |u| u.confirm! } # that's the console confirmation for devise.
+# User.all.each { |u| u.confirm! } # that's the console confirmation for devise.
