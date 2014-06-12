@@ -30,12 +30,13 @@ $ ->
     $.getJSON("/messages/unseen").done (data) ->
       unseen_count = _(data).where({seen: false}).length
       if unseen_count > 0
-        $("#navbar-messages-link").text "Messages(#{unseen_count})"
+        $("#navbar-messages-link span").addClass("new-counts").html("<sup>(#{unseen_count})</sup>")
 
   getUnseenViewCount = ->
     $.getJSON("/profile/views/unseen").done (data) ->
-      unseen_count = _(data).where({seen: false}).length
-      $("#navbar-views-link").text "Views(#{unseen_count})"
+      unseen_count = data #here I (Andrey) am actually using a different (better) approach than in the privious method (get JSON to return me the count of views instead of individual views), because I am an idiot
+      if unseen_count > 0
+        $("#navbar-views-link span").addClass("new-counts").html("<sup>(#{unseen_count})</sup>")
 
   # getUnseenViewCount = ->
   #   count = 0

@@ -11,5 +11,9 @@
           %li= link_to "Search", root_path(search: true) , :id => "search_form_link"
           %li= link_to "My profile", show_current_user_profile_path
           %li= link_to "Saved profiles", saved_profiles_path 
-          %li= link_to "Views", current_user_profile_views_path, id:"navbar-views-link"
-          %li= link_to "Messages", mailbox_type_messages_path("inbox"), id: "navbar-messages-link"
+          %li
+            = link_to current_user_profile_views_path, id:"navbar-views-link" do
+              Views<span></span> 
+          %li
+            = link_to mailbox_type_messages_path("inbox"), id: "navbar-messages-link" do
+              Messages<span></span>
