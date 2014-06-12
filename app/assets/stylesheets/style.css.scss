@@ -84,8 +84,30 @@
   height: 175px;
 }
 
-// For navbar (to make the notification counts of messages and views more noticeable)
+// For navbar notification area (to make the counts of new messages and views more noticeable)
 .new-counts {
   padding-left: 2px;
   color: white;
+
+// Search form
+
+.search-row {
+  height: 20px
+}
+
+.left-label {
+  text-align: left !important;
+  font-weight: normal;
+}
+
+.other-label {
+  font-weight: normal;
+}
+
+.form-label-top, .form-label-left, .form-label-rightl{
+  font-weight: normal!important;
+}
+
+.long-search-row {
+  margin-left: 0px;
 }

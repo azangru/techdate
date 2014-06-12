@@ -24,6 +24,11 @@ $ ->
     e.preventDefault()
     $("#search_type").val("complex")
     expandElement("long_search")
+    $("#short_search_buttons").hide()
+
+  $("#back_to_short_search").on "click", (e) ->
+    $("#search_type").val("simple")
+    $("#long_search").hide()
 
   # Tracking new messages and views
   getUnseenMessageCount = ->

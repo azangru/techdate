@@ -3,51 +3,55 @@
 = search_form_for @search, url: search_users_path, html: { method: :post }, :class => "form-horizontal" do |f|
   #short_search{short_form_display}
     %h4 I am looking for...
-    .form-group
-      = f.label :profile_gender_eq, "Super hacker", :class => "col-sm-2 control-label"
+    .form-group.search-row
+      = f.label :profile_gender_eq, "Super hacker", :class => "col-sm-2 control-label left-label"
       .col-sm-1.select-form-inline
         = f.select :profile_gender_eq, options_for_select(User::INTERESTED_IN_GENDER), :class => "form-control"
-      = f.label :profile_age_gteq, "aged", :class => "col-sm-1 control-label"
+      = f.label :profile_age_gteq, "aged", :class => "col-sm-1 control-label other-label"
       .col-sm-1
         = f.number_field :profile_age_gteq, :min=>18, :max=>100, :class => "form-control"
-      = f.label :profile_age_lteq, "to", :class => "col-sm-1 control-label"
+      = f.label :profile_age_lteq, "to", :class => "col-sm-1 control-label other-label"
       .col-sm-1
         = f.number_field :profile_age_lteq, :min=>18, :max=>100, :class => "form-control"
       .col-sm-6
-    .form-group
-      = label :search_match_type, "Only show people interested in people like me", :class => "col-sm-4 control-label"
-      = check_box_tag :search_match_type
-    / .form-group
-    /   = f.label :profile_interested_in_gender_eq, "who are interested in "
-    /   = f.select :profile_interested_in_gender_eq, options_for_select(User::INTERESTED_IN_GENDER), :class => "form-control"
-    / .form-group
-    /   = f.label :profile_interested_in_age_start_gteq, "aged"
-    /   = f.number_field :profile_interested_in_age_start_gteq, :class => "form-control"
-    %button#long_search_button.btn.btn-default More search fields
-    %br
-    = f.submit "Search", :class => "btn btn-default"
+    .form-group.search-row
+      = label :search_match_type, "Only show people interested in people like me", :class => "col-sm-4 control-label left-label"
+      = check_box_tag :search_match_type, 1, :checked => true
+    #short_search_buttons
+      = f.submit "Search", :class => "btn btn-default"
+      %button#long_search_button.btn.btn-default More search fields
   #long_search{long_form_display}
-    .form-group
-      = f.label :profile_city_cont
-      = f.search_field :profile_city_cont, :class => "form-control"
-    .form-group
-      = f.label :profile_current_occupation_cont
-      = f.search_field :profile_current_occupation_cont, :class => "form-control"
-    .form-group
-      = f.label :profile_native_human_language_or_profile_other_human_languages_cont
-      = f.search_field :profile_native_human_language_or_profile_other_human_languages_cont, :class => "form-control"
-    .form-group
-      = f.label :first_name_or_last_name_cont
-      = f.search_field :first_name_or_last_name_cont, :class => "form-control"
-    .form-group
-      = f.label :profile_interests_cont
-      = f.search_field :profile_interests_cont, :class => "form-control"
-    .form-group
-      = f.label :profile_children_eq
-      = f.number_field :profile_children_eq, :class => "form-control"
-    .form-group
-      = f.label :profile_relationship_status_cont_any
-      = select_tag :profile_relationship_status_cont_any, options_for_select(Profile::RELATIONSHIP_STATUS),  multiple: true, size: 7, :class => "form-control"
-    = hidden_field_tag :search_type
+    .row.long-search-row
+      .form-group.search-row
+        = f.label :first_name_or_last_name_cont, "Name", :class => "col-sm-2 control-label left-label"
+        .col-sm-2
+          = f.search_field :first_name_or_last_name_cont, :class => "form-control"
+        = f.label :profile_city_cont, "City", :class => "col-sm-2 control-label left-label"
+        .col-sm-2
+          = f.search_field :profile_city_cont, :class => "form-control"
+      .form-group.search-row
+        = f.label :profile_current_occupation_cont, "Profession", :class => "col-sm-2 control-label left-label"
+        .col-sm-2
+          = f.search_field :profile_current_occupation_cont, :class => "form-control"
+        = f.label :profile_interests_cont, "Interests", :class => "col-sm-2 control-label left-label"
+        .col-sm-2
+          = f.search_field :profile_interests_cont, :class => "form-control"
+      .form-group.search-row
+        = f.label :profile_native_human_language_or_profile_other_human_languages_cont, "Human languages", :class => "col-sm-2 control-label left-label"
+        .col-sm-2
+          = f.search_field :profile_native_human_language_or_profile_other_human_languages_cont, :class => "form-control"
+        = f.label :profile_programming_languages_cont, "Machine languages",:class => "col-sm-2 control-label left-label"
+        .col-sm-2
+          = f.search_field :profile_programming_languages_cont, :class => "form-control"
+      .form-group.search-row 
+        = f.label :profile_relationship_status_cont_any, "Relationship status (choose as many as you'd like)", :class => "col-sm-2 control-label left-label"
+        .col-sm-2
+          = select_tag :profile_relationship_status_cont_any, options_for_select(Profile::RELATIONSHIP_STATUS),  multiple: true, size: 7, :class => "form-control"
+        = f.label :profile_children_lteq, "Children (no more than)", :class => "col-sm-2 control-label left-label"
+        .col-sm-2
+          = f.number_field :profile_children_lteq, :class => "form-control"
+        = hidden_field_tag :search_type
 
-    = f.submit "Search", :class => "btn btn-default"
+    .row.long-search-row
+      = f.submit "Search", :class => "btn btn-default"
+      %button#back_to_short_search.btn.btn-default Less search fields
