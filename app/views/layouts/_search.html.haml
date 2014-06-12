@@ -6,7 +6,7 @@
     .form-group.search-row
       = f.label :profile_gender_eq, "Super hacker", :class => "col-sm-2 control-label left-label"
       .col-sm-1.select-form-inline
-        = f.select :profile_gender_eq, options_for_select(User::INTERESTED_IN_GENDER), :class => "form-control"
+        = f.select :profile_gender_eq, options_for_select([["men", "male"], ["women", "female"]]), :class => "form-control"
       = f.label :profile_age_gteq, "aged", :class => "col-sm-1 control-label other-label"
       .col-sm-1
         = f.number_field :profile_age_gteq, :min=>18, :max=>100, :class => "form-control"

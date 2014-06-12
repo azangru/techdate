@@ -11,7 +11,7 @@ class UsersController < Devise::RegistrationsController
       # end
       unless params[:q].nil?
         if params[:search_match_type] == "1"
-          searcher_gender = current_user.profile.gender
+          searcher_gender = current_user.profile.gender 
           searcher_age = current_user.profile.age
           params[:q][:profile_interested_in_gender_eq] = searcher_gender
           params[:q][:profile_interested_in_age_start_lteq] = searcher_age

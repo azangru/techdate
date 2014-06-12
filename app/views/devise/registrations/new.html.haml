@@ -22,7 +22,7 @@
           = f.fields_for :profile_attributes do |p|
             .form-group
               = p.label(:interested_in_gender, "Super hacker")
-              = p.select :interested_in_gender, options_for_select(User::INTERESTED_IN_GENDER), :selected => "Women", :class => "form-control"
+              = p.select :interested_in_gender, options_for_select([["men", "male"], ["women", "female"]],:selected => "female"),  :class => "form-control"
             .form-group 
               = p.label(:interested_in_age_start, "who are older than")
               = p.number_field :interested_in_age_start, :min=>18, :max=>100, :class => "form-control", :value => 21
@@ -37,7 +37,7 @@
           = f.fields_for :profile_attributes do |p|
             .form-group
               = p.label(:gender, "I am a ")
-              = p.select :gender, options_for_select(User::GENDER), :selected => "Male", :class => "form-control"
+              = p.select :gender, options_for_select(User::GENDER), :selected => "male", :class => "form-control"
             .form-group
               = p.label(:age, "aged")
               = p.number_field :age, :min=>18, :max=>100, :class => "form-control", :value => 25
