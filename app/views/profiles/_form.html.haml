@@ -38,6 +38,6 @@
     = f.select :relationship_status, options_for_select(Profile::RELATIONSHIP_STATUS), :class => "form-control"
   .form-group
     = f.label :children
-    = f.number_field :children, :class => "form-control"
+    = f.number_field :children, :class => "form-control", :value => 0
   .actions
     = f.submit 'Save'

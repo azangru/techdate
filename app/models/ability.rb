@@ -12,7 +12,7 @@ class Ability
         can :read, Message, :recepient_id => user.id 
         can :read, Message, :sender_id => user.id
       elsif user.role == "basic_user"
-        can :update, Profile, :user_id => user.id
+        can [:read, :update], Profile, :user_id => user.id
       end
   end
 end

@@ -43,7 +43,7 @@ class MessagesController < ApplicationController
   # GET /users/:user_id/messages/new.json
   def new
     @message = Message.new
-    @user = params[:user_id]
+    @user = User.find(params[:user_id])
     authorize! :create, Message
 
     respond_to do |format|
