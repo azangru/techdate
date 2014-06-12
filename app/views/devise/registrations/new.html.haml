@@ -3,13 +3,13 @@
     =image_tag 'homepage_1.jpg', :id => "homepage_pic"
 
   .col-md-4
-    %h2 Welcome to
     .row
-      %h1.col-md-2 Techdate
-      =image_tag 'glasses-hearts-logo.png', :id => 'homepage_logo', :class => 'col-md-2'
+      =image_tag 'techdate_welcome.png'
     .row
       %p 
-        At Techdate, we believe everyone should find the key to their value.
+        At Techdate, we believe everyone should find the 
+        %em
+          'key to their value.'
         So what are you waiting for? `git checkout Techdate` now
 
     = form_for(resource, as: resource_name, url: registration_path(resource_name), role: "form") do |f|
