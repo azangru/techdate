@@ -30,7 +30,6 @@ class UsersController < Devise::RegistrationsController
 
   def create 
     super
-    binding.pry
     # make sure nested attributes for form are used
     @user.update_attributes(params[:user].merge(role: "basic_user"))
   end
