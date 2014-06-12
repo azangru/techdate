@@ -23,6 +23,7 @@ class Profile < ActiveRecord::Base
   after_update :update_user_role
 
   RELATIONSHIP_STATUS = ["Single", "In a relationship", "It's complicated", "In an open relationship", "Engaged", "In a civil union", "In a domestic partnership", "Married", "Divorced", "Widowed", "Separated"]
+  PROFILE_STEPS = 13 # Profile attributes, plus image, excluding non user inputted fields
 
   # validates :age, presence: true, numericality: true
   # validates :children, numericality: true
@@ -45,6 +46,22 @@ class Profile < ActiveRecord::Base
         user.update_attribute(:role, "basic_user")
       end
     end
+  end
+
+  def profile_progress
+    progress = []
+    if user.present? && user.role != "admin"
+      attributes.values.each do |n|
+        if n == nil || ""
+          progress << 1
+        end
+      end
+    end
+    progress = progress.reduce(:+)
+    if user.image?
+      progress +=1
+    end
+    progress -= 6 # removing non-user filled in profile steps
   end
   
   def latest_views # working method, which Michael says is rubbish, because it contains an ugly SQL statement; research how to do this with Active Record finders (when have time)

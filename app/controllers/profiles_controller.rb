@@ -22,6 +22,10 @@ class ProfilesController < ApplicationController
     @profile = @user.profile
     authorize! :show, @profile
 
+    @progress = @profile.profile_progress
+    @progress_remaining = Profile::PROFILE_STEPS - @progress
+    @progress_percent = @progress/Profile::PROFILE_STEPS * 100
+
     #here is code for creating a "view" event in the Views table
     unless current_user.id == @user.id
       @view = View.new

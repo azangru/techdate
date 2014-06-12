@@ -1,7 +1,10 @@
-%p#notice= notice
+- if current_user.role == "basic_user"
+  %h4 Looks like you haven't finished filling in your profile yet! Update your profile now to get premium access, view other users' profiles and send messages. Only #{pluralize @progress_remaining, "quick step"}  to go.
+  .progress
+    .progress-bar{"aria-valuemax" => "200", "aria-valuemin" => "0", "aria-valuenow" => "200" , role: "progressbar", style: "width: #{@progress_percent}%;"}
+      = @progress_percent
+      \%
 
-- if @profile.user == current_user
-  = link_to "View Counts", current_user_profile_views_path
 .row
   / .col-md-1
   .col-md-4
