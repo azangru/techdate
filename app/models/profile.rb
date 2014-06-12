@@ -24,7 +24,7 @@ class Profile < ActiveRecord::Base
   after_update :update_user_role
 
   RELATIONSHIP_STATUS = ["Single", "In a relationship", "It's complicated", "In an open relationship", "Engaged", "In a civil union", "In a domestic partnership", "Married", "Divorced", "Widowed", "Separated"]
-  PROFILE_STEPS = 13 # Profile attributes, plus image, excluding non user inputted fields
+  PROFILE_STEPS = 18 # Profile attributes, plus image, excluding non user inputted fields
 
   # validates :age, presence: true, numericality: true
   # validates :children, numericality: true
@@ -53,18 +53,17 @@ class Profile < ActiveRecord::Base
     if user.role == "admin"
       progress = Profile::PROFILE_STEPS
     else
-      progress = []
+      progress = 0
       if user.present? 
         attributes.values.each do |n|
-          if n == nil || ""
-            progress << 1
+          if n == nil || n == ""
+            progress += 1
           end
         end
-        progress = progress.reduce(:+)
-        if user.image?
+        unless user.image?
           progress +=1
         end
-        progress -= 6 # removing non-user filled in profile steps
+        progress
       end
     end
   end
@@ -77,6 +76,5 @@ class Profile < ActiveRecord::Base
     results = View.find_by_sql("SELECT count(*) as record_count FROM views WHERE profile_id = #{id} and seen = false GROUP BY viewer_id, seen")
     results.first.try(:record_count).to_i
   end
-
 
 end
