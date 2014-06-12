@@ -1,14 +1,18 @@
-%h1 Listing saved_profiles
+%h1 Saved profiles
 
-%table
+%table.table.table-hover
   %tr
     %th 
     %th Name
+    %th Location
+    %th Age
     %th
 
   - @saved_profiles.each do |s|
     %tr
       %td= link_to image_tag(s.profile.user.image.thumb.url), show_user_profile_path(s.profile.user)
       %td= s.profile.user.full_name
+      %td= Profile.find(s.profile_id).city
+      %td= Profile.find(s.profile_id).age
       %td= link_to 'Remove', s, :method => :delete
 
