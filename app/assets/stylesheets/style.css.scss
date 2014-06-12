@@ -83,3 +83,26 @@
 .message-box {
   height: 175px;
 }
+
+// Search form
+
+.search-row {
+  height: 20px
+}
+
+.left-label {
+  text-align: left !important;
+  font-weight: normal;
+}
+
+.other-label {
+  font-weight: normal;
+}
+
+.form-label-top, .form-label-left, .form-label-rightl{
+  font-weight: normal!important;
+}
+
+.long-search-row {
+  margin-left: 0px;
+}
