@@ -39,5 +39,8 @@
   .form-group
     = f.label :children
     = f.number_field :children, :class => "form-control", :value => 0
+  .form-group
+    = f.label :image, "Your photo"
+    = f.file_field :image
   .actions
     = f.submit 'Save'

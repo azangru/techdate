@@ -83,7 +83,7 @@ class ProfilesController < ApplicationController
     authorize! :update, @profile
 
     respond_to do |format|
-      if @profile.update_attributes(params[:profile])
+      if @profile.update_attributes(params[:profile].except(:image)) && @user.update_attribute(:image, params[:profile][:image])
         format.html { redirect_to show_current_user_profile_path, notice: 'Profile was successfully updated.' }
         format.json { head :no_content }
       else
@@ -109,6 +109,10 @@ class ProfilesController < ApplicationController
   ############ CODE FOR VIEWS ################ 
   def views
     @profile = current_user.try(:profile)
+    ####### this makes all the views "seen" ######
+    views_to_make_seen = @profile.views
+    views_to_make_seen.each { |view| view.update_attribute(:seen, true) }
+    ############################
     @views = @profile.latest_views
     unseen_ids = @views.select { |v| !v.seen }.map(&:id)
     if unseen_ids.any?
