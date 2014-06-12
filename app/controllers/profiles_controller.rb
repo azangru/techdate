@@ -117,7 +117,9 @@ class ProfilesController < ApplicationController
   end
   
   def unseen_views
-    render json: current_user.profile.latest_unseen_views_count   
+    if current_user
+      render json: current_user.profile.latest_unseen_views_count
+    end
   end
   ############################################
 

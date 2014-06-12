@@ -1,0 +1,14 @@
+%h1 Listing saved_profiles
+
+%table
+  %tr
+    %th 
+    %th Name
+    %th
+
+  - @saved_profiles.each do |s|
+    %tr
+      %td= link_to image_tag(s.profile.user.image.thumb.url), show_user_profile_path(s.profile.user)
+      %td= s.profile.user.full_name
+      %td= link_to 'Remove', s, :method => :delete
+

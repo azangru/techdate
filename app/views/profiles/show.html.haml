@@ -48,4 +48,4 @@
   = link_to 'Edit', edit_current_user_profile_path
 - if can? :create, Message
   = link_to 'Send a message', new_user_message_path(@user)
-
+= link_to "Save this profile", user_saved_profiles_path(@user), :method => :post

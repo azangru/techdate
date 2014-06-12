@@ -294,6 +294,249 @@ u12.profile.update_attributes(
   children: 0
 )
 
+u13 = User.create!(
+  first_name: "David Heinemeier",
+  last_name: "Hansson",
+  password: "password",
+  email: "david@example.com",
+  role: "premium_user",
+  remote_image_url: "http://24.media.tumblr.com/896fe4329c92f01da9d451ae2e79f8f3/tumblr_n38slq1xVn1s7aky5o1_1280.jpg",
+  paid: true
+)
+
+u13.profile.update_attributes(
+  bio: "I am the creator of Ruby on Rails, founder & CTO at Basecamp (formerly 37signals), best-selling author, public speaker, race-car driver, hobbyist photographer, and a wannabe family man.",
+  age: 25,
+  gender: "male",
+  interested_in_gender: "women",
+  city: "London",
+  current_occupation: "Arrogant programmer",
+  programming_languages: "Ruby, C, C++, Python",
+  native_human_language: "English",
+  interests: "traveling, movies, reading",
+  relationship_status: "single",
+  children: 0
+)
+
+u14 = User.create!(
+  first_name: "Yukihiro",
+  last_name: "Matsumoto",
+  password: "password",
+  email: "yukihiro@example.com",
+  role: "premium_user",
+  remote_image_url: "http://24.media.tumblr.com/72af116681f27ef609b5b9dd8fc4c58b/tumblr_mkoatz6RkU1s7aky5o2_r1_1280.jpg",
+  paid: true
+)
+
+u14.profile.update_attributes(
+  bio: "Born in Osaka Prefecture (Japan), was raised in Tottori Prefecture from the age of four. Was a self-taught programmer until the end of high school. He graduated with an information science degree from University of Tsukuba. Created Ruby.",
+  age: 35,
+  gender: "male",
+  interested_in_gender: "women",
+  city: "London",
+  current_occupation: "Arrogant programmer",
+  programming_languages: "Ruby, C, C++, Python",
+  native_human_language: "English",
+  interests: "traveling, movies, reading",
+  relationship_status: "single",
+  children: 0
+)
+
+u15 = User.create!(
+  first_name: "Jeremy",
+  last_name: "Ashkenas",
+  password: "password",
+  email: "jeremy@example.com",
+  role: "premium_user",
+  remote_image_url: "http://31.media.tumblr.com/98caa5f94a61a20a6f09a9542c806051/tumblr_mkz6xfmawF1s7aky5o2_r1_1280.jpg",
+  paid: true
+)
+
+u15.profile.update_attributes(
+  bio: "When I am not on the road taking gorgeous shots of my travels, I doing things like coding for The New York Times and creating CoffeeScript and Backbone.js. Isn't it enough to make you want date me?",
+  age: 32,
+  gender: "male",
+  interested_in_gender: "women",
+  city: "London",
+  current_occupation: "Awesome programmer",
+  programming_languages: "Ruby, Jacascript, CoffeScript, C, C++, Python",
+  native_human_language: "English",
+  interests: "traveling, photography, movies, reading",
+  relationship_status: "single",
+  children: 0
+)
+
+u16 = User.create!(
+  first_name: "Leonardo",
+  last_name: "DiCaprio",
+  password: "password",
+  email: "leonardo@example.com",
+  role: "premium_user",
+  remote_image_url: "http://24.media.tumblr.com/6e444d4a710e6bd4a31734abe1722798/tumblr_mj7267o4je1s7aky5o2_r1_1280.jpg",
+  paid: true
+)
+
+u16.profile.update_attributes(
+  bio: "Was born in Los Angeles (California) and now reside in London. Have been programming for web since the tender age of 10. Looking for like-minded women for pair-programming and beyond.",
+  age: 32,
+  gender: "male",
+  interested_in_gender: "women",
+  city: "London",
+  current_occupation: "Freelance web developer",
+  programming_languages: "Ruby, Jacascript, CoffeScript, Python",
+  native_human_language: "English",
+  interests: "traveling, movies, reading",
+  relationship_status: "single",
+  children: 0
+)
+
+u17 = User.create!(
+  first_name: "Tom",
+  last_name: "Cruise",
+  password: "password",
+  email: "tom@example.com",
+  role: "premium_user",
+  remote_image_url: "http://37.media.tumblr.com/abafdc38615d02abc2c7cba2573a59db/tumblr_mv8fkojfkF1s7aky5o1_1280.jpg",
+  paid: true
+)
+
+u17.profile.update_attributes(
+  bio: "I’m a person who enjoys meeting new people all the time. I love to socialize, embrace life and am a lot of fun if I say so myself! Online dating has been quite the adventure and I am still looking for that special someone. If you are looking for someone genuine, look no further! I don’t have patience for people who pretend to be something they are not. \nI’m honest, forgiving and love to laugh. If you can make me laugh, I would be interested in speaking to you. There are too many people who take life seriously and don’t make time to enjoy the finest pleasures. That would include taking in the outdoors, sitting in front of a fireplace and eating gummy worms on a regular basis for me! \nTell me what your idea of having fun is. I enjoy the weekends out when I am not on a coding spree and would love to have someone accompany me. It could be an evening of taking in the local comedy scene or local bands. Drop me an email and we’ll chat soon!",
+  age: 32,
+  gender: "male",
+  interested_in_gender: "women",
+  city: "London",
+  current_occupation: "Server programmer",
+  programming_languages: "Java, Python, Ruby",
+  native_human_language: "English",
+  interests: "traveling, movies, reading",
+  relationship_status: "single",
+  children: 0
+)
+
+u18 = User.create!(
+  first_name: "Tom",
+  last_name: "Hanks",
+  password: "password",
+  email: "tomh@example.com",
+  role: "premium_user",
+  remote_image_url: "http://37.media.tumblr.com/25134dde45350a1536b5252089f0bcda/tumblr_mv2tg8dzBW1s7aky5o1_1280.jpg",
+  paid: true
+)
+
+u18.profile.update_attributes(
+  bio: "I really don’t want to bore you to tears by writing about what a great catch I am. I’m sure you’ve read many dating profiles that have told you they are perfect for you! I’ve always believed that actions speak louder than words don’t you think? It would be great to meet face to face for coffee and see where it goes from there. \nA few words about myself. I am American-born, have been programming for as long as I can remember myself. I’m a perfectionist and that's why I ended up in sofware testing. \nIf you are honest and are looking to meet someone for casual dating, make sure to email me. I am looking to date but if it leads to something more, it’s always a good thing. Don’t forget to tell me something about yourself!",
+  age: 36,
+  gender: "male",
+  interested_in_gender: "women",
+  city: "London",
+  current_occupation: "Software tester",
+  programming_languages: "Java, Python, Ruby, C, C++",
+  native_human_language: "English",
+  interests: "traveling, movies, reading",
+  relationship_status: "single",
+  children: 0
+)
+
+u19 = User.create!(
+  first_name: "Brad",
+  last_name: "Pitt",
+  password: "password",
+  email: "brad@example.com",
+  role: "premium_user",
+  remote_image_url: "http://31.media.tumblr.com/37d702013ed44221374b64f85dea376f/tumblr_mk24a5QcX61s7aky5o2_r2_1280.jpg",
+  paid: true
+)
+
+u19.profile.update_attributes(
+  bio: "I am an American actor and film producer. I have received a Golden Globe Award, a Screen Actors Guild Award, and three Academy Award nominations in acting categories, and received two further Academy Award nominations, winning one, for productions of my film production company Plan B Entertainment. Most interestly, I have been described as one of the world's most attractive men, a label for which I have received substantial media attention.",
+  age: 50,
+  gender: "male",
+  interested_in_gender: "women",
+  city: "LA",
+  current_occupation: "Film producer",
+  programming_languages: "Python",
+  native_human_language: "English",
+  interests: "hanging out with my kids, traveling, tennis",
+  relationship_status: "engaged",
+  children: 6
+)
+
+u20 = User.create!(
+  first_name: "George",
+  last_name: "Clooney",
+  password: "password",
+  email: "george@example.com",
+  role: "premium_user",
+  remote_image_url: "http://24.media.tumblr.com/0a99e30973d3957bad553af26816ef61/tumblr_mj6r8jmivW1s7aky5o2_r1_1280.jpg",
+  paid: true
+)
+
+u20.profile.update_attributes(
+  bio: "I'm an American actor, film director, producer, and screenwriter. I've received three Golden Globe Awards for my work as an actor and two Academy Awards, one for acting and the other for producing. What you might not know about me is that I'm also noted for my political activism and I have served as one of the United Nations Messengers of Peace since 2008.",
+  age: 53,
+  gender: "male",
+  interested_in_gender: "women",
+  city: "New York",
+  current_occupation: "Film director, producer, actor, screenwriter - full stack",
+  programming_languages: "Ruby",
+  native_human_language: "English",
+  interests: "directing, cooking, reading, traveling",
+  relationship_status: "single",
+  children: 0
+)
+
+u21 = User.create!(
+  first_name: "Bruce",
+  last_name: "Willis",
+  password: "password",
+  email: "bruce@example.com",
+  role: "premium_user",
+  remote_image_url: "http://37.media.tumblr.com/64ed99a0fc43606a3905d70348d97aae/tumblr_mj9dqiRFhA1s7aky5o2_r1_1280.jpg",
+  paid: true
+)
+
+u21.profile.update_attributes(
+  bio: "I'm an American actor, producer, and singer. My career began on the Off-Broadway stage and then in television in the 1980s, most notably as David Addison in Moonlighting (1985â€“89) and has continued both in television and film since, including comedic, dramatic, and action roles.I'm probably best known for my role of John McClane in the Die Hard series, which were mostly critical and uniformly financial successes. In fact, the movies I'm in have grossed about $3b in the North American box office alone.",
+  age: 59,
+  gender: "male",
+  interested_in_gender: "women",
+  city: "LA",
+  current_occupation: "Actor, producer and singer but I made a code school webpage once",
+  programming_languages: "CSS?",
+  native_human_language: "English",
+  interests: "acting, working out",
+  relationship_status: "divorced",
+  children: 5
+)
+
+u22 = User.create!(
+  first_name: "Matt",
+  last_name: "Damon",
+  password: "password",
+  email: "matt@example.com",
+  role: "premium_user",
+  remote_image_url: "http://37.media.tumblr.com/ae3aba3c0a2af7adff378df79bfcc64b/tumblr_mlkam4rGTL1s7aky5o1_1280.jpg",
+  paid: true
+)
+
+u22.profile.update_attributes(
+  bio: "Hi, I'm an an American actor, voice actor, screenwriter, producer, and philanthropist whose career was launched following the success of the drama film Good Will Hunting which I wrote with my best friend, Ben Affleck. ",
+  age: 43,
+  gender: "male",
+  interested_in_gender: "women",
+  city: "London",
+  current_occupation: "Actor but dabble in code",
+  programming_languages: "Rails",
+  native_human_language: "English",
+  interests: "acting, cooking, swimming",
+  relationship_status: "single",
+  children: 3
+)
+
+
+
+
 m1 = Message.create!(
   sender_id: u1.id,
   recipient_id: u2.id,
