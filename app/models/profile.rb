@@ -50,19 +50,23 @@ class Profile < ActiveRecord::Base
   end
 
   def profile_progress
-    progress = []
-    if user.present? && user.role != "admin"
-      attributes.values.each do |n|
-        if n == nil || ""
-          progress << 1
+    if user.role == "admin"
+      progress = Profile::PROFILE_STEPS
+    else
+      progress = []
+      if user.present? 
+        attributes.values.each do |n|
+          if n == nil || ""
+            progress << 1
+          end
         end
+        progress = progress.reduce(:+)
+        if user.image?
+          progress +=1
+        end
+        progress -= 6 # removing non-user filled in profile steps
       end
     end
-    progress = progress.reduce(:+)
-    if user.image?
-      progress +=1
-    end
-    progress -= 6 # removing non-user filled in profile steps
   end
   
   def latest_views # working method, which Michael says is rubbish, because it contains an ugly SQL statement; research how to do this with Active Record finders (when have time)
