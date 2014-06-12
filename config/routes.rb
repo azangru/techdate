@@ -7,6 +7,7 @@
 
 Techdate::Application.routes.draw do
 
+
   devise_for :users, controllers: { registrations: 'users' }
 
   get "/messages/:type",constraints: { type: /inbox|sent/ }, to: "messages#index", as: :mailbox_type_messages #Gerry's suggestion to distinguish between the inbox and sent_box contexts in the view
@@ -20,6 +21,9 @@ Techdate::Application.routes.draw do
     end
   end
 
+  resources :saved_profiles, only: [:index, :destroy]
+
+
   devise_scope :user do
     # root :to => 'users#new', :constraints => SignedInConstraint
     root :to => 'users#index'
@@ -28,6 +32,7 @@ Techdate::Application.routes.draw do
         match 'search' => 'users#search', via: [:get, :post], as: :search
       end
       resources :messages, only: [:new, :create]
+      resources :saved_profiles, only: [:create]
     end
   end
 

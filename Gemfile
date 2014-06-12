@@ -1,3 +1,5 @@
+ruby "2.1.1"
+
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.17'
@@ -34,6 +36,10 @@ gem 'carrierwave', "0.9.0"
 gem 'rmagick'
 gem 'bootstrap-sass', '~> 3.1.1'
 gem 'will_paginate', '~> 3.0'
+
+group :production do
+  gem 'rails_12factor'
+end
 
 
 # To use ActiveModel has_secure_password

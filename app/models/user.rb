@@ -1,9 +1,9 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
-  # :lockable and :omniauthable
+  # :confirmable, :lockable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :confirmable, :timeoutable
+         :timeoutable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email,
@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
 
   has_one :profile
   has_many :views, foreign_key: 'viewer_id'
+  has_many :saved_profiles, foreign_key: 'saver_id'
   has_many :sent_messages, class_name: "Message", foreign_key: 'sender_id'
   has_many :received_messages, class_name: "Message", foreign_key: 'recipient_id'
 

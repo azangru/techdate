@@ -19,6 +19,7 @@ class Profile < ActiveRecord::Base
                   :interested_in_age_end
 
   has_many :views
+  has_many :saved_profiles
 
   after_update :update_user_role
 
