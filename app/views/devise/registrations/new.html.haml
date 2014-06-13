@@ -13,7 +13,8 @@
         So what are you waiting for? `git checkout Techdate` now
 
     = form_for(resource, as: resource_name, url: registration_path(resource_name), role: "form") do |f|
-      = devise_error_messages!
+      .alert-error
+        = devise_error_messages!
 
       / Page one
       .well

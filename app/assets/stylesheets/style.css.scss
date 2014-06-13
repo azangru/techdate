@@ -26,6 +26,7 @@
   width: 90%;
   margin: auto;
   height: 100%;
+  margin-top: 15px;
 }
 
 .login_message {
@@ -61,6 +62,13 @@
 
 .right-profile-box {
   padding: 0px;
+}
+
+.profile-button {
+  width: 123px;
+  margin: 3px 0px;
+  float: right;
+  margin-right: -18px;
 }
 
 // New message styling
@@ -110,4 +118,18 @@
 
 .long-search-row {
   margin-left: 0px;
+}
+
+// Notices
+
+.alert-notice {
+  @extend .alert-success;
+}
+
+.alert-alert {
+  @extend .alert-warning;
+}
+
+.alert-error {
+  @extend .alert-danger;
 }
