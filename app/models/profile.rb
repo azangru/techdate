@@ -19,10 +19,12 @@ class Profile < ActiveRecord::Base
                   :interested_in_age_end
 
   has_many :views
+  has_many :saved_profiles
 
   after_update :update_user_role
 
   RELATIONSHIP_STATUS = ["Single", "In a relationship", "It's complicated", "In an open relationship", "Engaged", "In a civil union", "In a domestic partnership", "Married", "Divorced", "Widowed", "Separated"]
+  PROFILE_STEPS = 18 # Profile attributes, plus image, excluding non user inputted fields
 
   # validates :age, presence: true, numericality: true
   # validates :children, numericality: true
@@ -46,6 +48,25 @@ class Profile < ActiveRecord::Base
       end
     end
   end
+
+  def profile_progress
+    if user.role == "admin"
+      progress = Profile::PROFILE_STEPS
+    else
+      progress = 0
+      if user.present? 
+        attributes.values.each do |n|
+          if n == nil || n == ""
+            progress += 1
+          end
+        end
+        unless user.image?
+          progress +=1
+        end
+        progress
+      end
+    end
+  end
   
   def latest_views # working method, which Michael says is rubbish, because it contains an ugly SQL statement; research how to do this with Active Record finders (when have time)
     View.find_by_sql "SELECT viewer_id, seen, MAX(created_at) as created_at FROM views WHERE profile_id = #{id} GROUP BY viewer_id, seen"
@@ -55,6 +76,5 @@ class Profile < ActiveRecord::Base
     results = View.find_by_sql("SELECT count(*) as record_count FROM views WHERE profile_id = #{id} and seen = false GROUP BY viewer_id, seen")
     results.first.try(:record_count).to_i
   end
-
 
 end

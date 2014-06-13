@@ -43,7 +43,7 @@ class MessagesController < ApplicationController
   # GET /users/:user_id/messages/new.json
   def new
     @message = Message.new
-    @user = params[:user_id]
+    @user = User.find(params[:user_id])
     authorize! :create, Message
 
     respond_to do |format|
@@ -59,7 +59,7 @@ class MessagesController < ApplicationController
     authorize! :create, Message
     @message.recipient_id = params[:user_id]
     @message.sender_id = current_user.id
-    @message.read = false
+    @message.read = false # this should have been defined as default in migration, I know
 
     respond_to do |format|
       if @message.save

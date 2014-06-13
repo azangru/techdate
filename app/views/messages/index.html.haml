@@ -20,11 +20,15 @@
     %th 
 
   - @messages.each do |message|
-    %tr
+    %tr{read_unread(message)}
       -if params[:type] == "inbox"
-        %td= message.sender.full_name
+        %td
+          = message.sender.full_name
       -if params[:type] == "sent"
-        %td= message.recipient.full_name
-      %td= link_to message.title, message
-      %td= message.created_at
+        %td
+          = message.recipient.full_name
+      %td
+        = link_to message.title, message
+      %td
+        = message.created_at
       %td= link_to 'Delete', message, :method => :put

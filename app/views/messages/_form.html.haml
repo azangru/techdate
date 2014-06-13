@@ -7,11 +7,23 @@
           %li= msg
 
 
-  .field
-    = f.label :title
-    = f.text_field :title
-  .field
-    = f.label :body
-    = f.text_area :body
-  .actions
-    = f.submit 'Send'
+  .row
+    .col-md-4
+      .row
+        .photo-sizing-message
+          = link_to image_tag(@user.image.url, class: "userpic"), show_user_profile_path(@user)
+      .row.top-buffer
+        %b Location:
+        = @user.profile.city
+      .row.top-buffer
+        %b Age:
+        = @user.profile.age
+    .col-md-8
+      .form-group
+        = f.label :title, "Subject"
+        = f.text_field :title, :class => "form-control"
+      .form-group
+        = f.label :body, "Message"
+        = f.text_area :body, :class => "form-control", :rows => 9
+      .actions
+        = f.submit 'Send', :class => "btn btn-default"

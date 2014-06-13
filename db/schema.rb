@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140611100730) do
+ActiveRecord::Schema.define(:version => 20140611213224) do
 
   create_table "messages", :force => true do |t|
     t.integer  "sender_id"
@@ -51,6 +51,16 @@ ActiveRecord::Schema.define(:version => 20140611100730) do
 
   add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"
 
+  create_table "saved_profiles", :force => true do |t|
+    t.integer  "saver_id"
+    t.integer  "profile_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "saved_profiles", ["profile_id"], :name => "index_saved_profiles_on_profile_id"
+  add_index "saved_profiles", ["saver_id"], :name => "index_saved_profiles_on_saver_id"
+
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
@@ -62,10 +72,6 @@ ActiveRecord::Schema.define(:version => 20140611100730) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.string   "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string   "unconfirmed_email"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "first_name"
@@ -75,7 +81,6 @@ ActiveRecord::Schema.define(:version => 20140611100730) do
     t.boolean  "paid"
   end
 
-  add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 

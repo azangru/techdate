@@ -8,11 +8,12 @@ class Ability
       elsif user.role == "premium_user"
         can :read, Profile
         can :update, Profile, :user_id => user.id
+        can :create, SavedProfile
         can :create, Message
         can :read, Message, :recepient_id => user.id 
         can :read, Message, :sender_id => user.id
       elsif user.role == "basic_user"
-        can :update, Profile, :user_id => user.id
+        can [:read, :update], Profile, :user_id => user.id
       end
   end
 end

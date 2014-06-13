@@ -1,21 +1,30 @@
-%p#notice= notice
+.row
+  .col-md-4
+    .row
+      .photo-sizing-message
+        = link_to image_tag(@message.sender.image.url, class: "userpic"), show_user_profile_path(@message.sender)
+    .row.top-buffer
+      %b Location:
+      = @message.sender.profile.city
+    .row.top-buffer
+      %b Age:
+      = @message.sender.profile.age
+  .col-md-8
+    .row
+      %b From:
+      .well.well-sm
+        = @message.sender.full_name
+    .row
+      %b Subject:
+      .well.well-sm
+        = @message.title
+    .row
+      %b Message:
+      .well.message-box
+        =@message.body  
 
-%p
-  %b Sender:
-  = @message.sender.full_name
-%p
-  %b Recipient:
-  = @message.recipient.full_name
-%p
-  %b Title:
-  = @message.title
-%p
-  %b Body:
-  = @message.body
-%p
-  %b Read:
-  = @message.read
+.row
+  .col-md-11
+  .col-md-1
+    = button_to("Reply", new_user_message_path(@message.sender), :class => "btn btn-default", :method => :get)
 
-/ = link_to 'Edit', edit_message_path(@message)
-/ \|
-/ = link_to 'Back', messages_path

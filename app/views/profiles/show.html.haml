@@ -1,51 +1,72 @@
-%p#notice= notice
 
-- if @profile.user == current_user
-  = link_to "View Counts", current_user_profile_views_path
+- if current_user.role == "basic_user" && @profile.user == current_user
+  %h4 Looks like you haven't finished filling in your profile yet! Update your profile now to get premium access, view other users' profiles and send messages. Only #{pluralize @progress_remaining, "quick step"}  to go.
+  .progress
+    .progress-bar{"aria-valuemax" => "200", "aria-valuemin" => "0", "aria-valuenow" => "200" , role: "progressbar", style: "width: #{@progress_percent}%;"}
+      = @progress_percent
+      \%
 
-= image_tag(@profile.user.image.url)
-%p
-  %b User:
-  = @profile.user.full_name
-%p
-  %b Bio:
-  = @profile.bio
-%p
-  %b Age:
-  = @profile.age
-%p
-  %b Interested In:
-  = @profile.interested_in_gender
-%p
-  %b Gender:
-  = @profile.gender
-%p
-  %b City:
-  = @profile.city
-%p
-  %b Current occupation:
-  = @profile.current_occupation
-%p
-  %b Programming languages:
-  = @profile.programming_languages
-%p
-  %b Native human language:
-  = @profile.native_human_language
-%p
-  %b Other human languages:
-  = @profile.other_human_languages
-%p
-  %b Interests:
-  = @profile.interests
-%p
-  %b Relationship status:
-  = @profile.relationship_status
-%p
-  %b Children:
-  = @profile.children
-
-- if can? :update, @profile
-  = link_to 'Edit', edit_current_user_profile_path
-- if can? :create, Message
-  = link_to 'Send a message', new_user_message_path(@user)
-
+.row
+  / .col-md-1
+  .col-md-4
+    .photo-sizing-profile
+      = image_tag(@profile.user.image.url, class: "userpic")
+  .col-md-7
+    .row
+      .col-md-10
+        %h3.remove-top-margin
+          = @profile.user.full_name
+      .col-md-2
+        - if can? :update, @profile
+          = button_to("Edit Profile", edit_current_user_profile_path, :class => "btn btn-default profile-button", :method => :get)
+        - if current_user != @profile.user
+          - if can? :create, Message
+            = button_to("Message me", new_user_message_path(@user), :class => "btn btn-default profile-button", :method => :get)
+        - if current_user != @profile.user && current_user.saved_profiles.where(profile_id: @profile.id).length == 0
+          = button_to("Save this profile", user_saved_profiles_path(@user), :class => "btn btn-default profile-button", :method => :post)
+    .row
+      %b Location:
+      = @profile.city
+    .row.top-buffer
+      %b Age:
+      = @profile.age
+    .row.top-buffer.bio-text
+      %b Bio:
+      = @profile.bio
+.row.top-buffer
+  / .col-md-1
+  .col-md-12
+    .row
+      .col-md-4
+        %b Gender:
+        = @profile.gender
+      .col-md-7.right-profile-box
+        %b Current job:
+        = @profile.current_occupation
+    .row.top-buffer
+      .col-md-4
+        %b Interested in:
+        = interested_in(@profile)
+        aged 
+        = @profile.interested_in_age_start
+        to 
+        = @profile.interested_in_age_end
+      .col-md-7.right-profile-box
+        %b Machine languages:
+        = @profile.programming_languages
+    .row.top-buffer
+      .col-md-4
+        %b Relationship status:
+        = @profile.relationship_status
+      .col-md-7.right-profile-box
+        %b Human languages:
+        = @profile.native_human_language
+        (native)
+        = @profile.other_human_languages
+    .row.top-buffer
+      .col-md-4
+        %b Number of children: 
+        = @profile.children
+      .col-md-7.right-profile-box
+        %b Interests:
+        = @profile.interests

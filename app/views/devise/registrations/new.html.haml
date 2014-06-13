@@ -3,17 +3,18 @@
     =image_tag 'homepage_1.jpg', :id => "homepage_pic"
 
   .col-md-4
-    %h2 Welcome to
     .row
-      %h1.col-md-2 Techdate
-      =image_tag 'glasses-hearts-logo.png', :id => 'homepage_logo', :class => 'col-md-2'
+      =image_tag 'techdate_welcome.png'
     .row
       %p 
-        At Techdate, we believe everyone should find the key to their value.
+        At Techdate, we believe everyone should find the 
+        %em
+          'key to their value.'
         So what are you waiting for? `git checkout Techdate` now
 
     = form_for(resource, as: resource_name, url: registration_path(resource_name), role: "form") do |f|
-      = devise_error_messages!
+      .alert-error
+        = devise_error_messages!
 
       / Page one
       .well
@@ -22,7 +23,7 @@
           = f.fields_for :profile_attributes do |p|
             .form-group
               = p.label(:interested_in_gender, "Super hacker")
-              = p.select :interested_in_gender, options_for_select(User::INTERESTED_IN_GENDER), :selected => "Women", :class => "form-control"
+              = p.select :interested_in_gender, options_for_select([["men", "male"], ["women", "female"]],:selected => "female"),  :class => "form-control"
             .form-group 
               = p.label(:interested_in_age_start, "who are older than")
               = p.number_field :interested_in_age_start, :min=>18, :max=>100, :class => "form-control", :value => 21
@@ -32,12 +33,13 @@
           %button#page_1_button.btn.btn-default Continue
 
         / Page two
+
         %div#page_2{style: "display: none"}
           %h4 Sign up to view profiles
           = f.fields_for :profile_attributes do |p|
             .form-group
               = p.label(:gender, "I am a ")
-              = p.select :gender, options_for_select(User::GENDER), :selected => "Male", :class => "form-control"
+              = p.select :gender, options_for_select(User::GENDER), :selected => "male", :class => "form-control"
             .form-group
               = p.label(:age, "aged")
               = p.number_field :age, :min=>18, :max=>100, :class => "form-control", :value => 25

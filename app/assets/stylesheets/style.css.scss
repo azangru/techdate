@@ -16,9 +16,9 @@
     display: inline-block;
     list-style: none;
   }
-  // img{
-  //   width: 250px;
-  // }
+  img{
+    width: 250px;
+  }
 }
 
 // Centering the content on the page
@@ -26,6 +26,7 @@
   width: 90%;
   margin: auto;
   height: 100%;
+  margin-top: 15px;
 }
 
 .login_message {
@@ -35,4 +36,100 @@
 
 .select-form-inline {
   margin-top: 7px;
+}
+
+// Profile page styling
+.photo-sizing-profile {
+  width: 300px;
+}
+
+.userpic {
+  width: 100%;
+}
+
+.top-buffer { 
+  margin-top:20px; 
+}
+
+.remove-top-margin {
+  margin-top: 0px;
+  margin-left: -15px;
+}
+
+.bio-text {
+  text-align: justify;
+}
+
+.right-profile-box {
+  padding: 0px;
+}
+
+.profile-button {
+  width: 123px;
+  margin: 3px 0px;
+  float: right;
+  margin-right: -18px;
+}
+
+// New message styling
+
+.photo-sizing-message {
+  width: 250px;
+}
+
+.move-heading-left {
+  margin-left: -15px
+}
+
+// Message styling
+
+.message-row {
+  font-weight: bold;
+  background-color: rgba(255, 178, 115, 0.4);
+}
+
+.message-box {
+  height: 175px;
+}
+
+// For navbar notification area (to make the counts of new messages and views more noticeable)
+.new-counts {
+  padding-left: 2px;
+  color: white;
+}
+// Search form
+
+.search-row {
+  height: 20px
+}
+
+.left-label {
+  text-align: left !important;
+  font-weight: normal;
+}
+
+.other-label {
+  font-weight: normal;
+}
+
+.form-label-top, .form-label-left, .form-label-rightl{
+  font-weight: normal!important;
+}
+
+.long-search-row {
+  margin-left: 0px;
+}
+
+// Notices
+
+.alert-notice {
+  @extend .alert-success;
+}
+
+.alert-alert {
+  @extend .alert-warning;
+}
+
+.alert-error {
+  @extend .alert-danger;
 }

@@ -8,4 +8,12 @@ module MessagesHelper
     end
   end
 
+  def read_unread(message)
+    if message.read == false 
+      {class: "message-row"} 
+    else
+      {}
+    end
+  end
+
 end
