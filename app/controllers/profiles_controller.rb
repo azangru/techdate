@@ -84,6 +84,7 @@ class ProfilesController < ApplicationController
 
     respond_to do |format|
       if @profile.update_attributes(params[:profile].except(:image)) && @user.update_attribute(:image, params[:profile][:image])
+        @profile.update_user_role
         format.html { redirect_to show_current_user_profile_path, notice: 'Profile was successfully updated.' }
         format.json { head :no_content }
       else

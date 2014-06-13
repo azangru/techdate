@@ -21,7 +21,7 @@ class Profile < ActiveRecord::Base
   has_many :views
   has_many :saved_profiles
 
-  before_update :update_user_role
+  # after_update :update_user_role
 
   RELATIONSHIP_STATUS = ["Single", "In a relationship", "It's complicated", "In an open relationship", "Engaged", "In a civil union", "In a domestic partnership", "Married", "Divorced", "Widowed", "Separated"]
   PROFILE_STEPS = 18 # Profile attributes, plus image, excluding non user inputted fields
