@@ -8,7 +8,8 @@
 
   - @saved_profiles.each do |s|
     %tr
-      %td= link_to image_tag(s.profile.user.image.thumb.url), show_user_profile_path(s.profile.user)
+      -if s.profile.user_id? # dirtiest hack imaginable because now every time a new user signs in, two profiles are created: one without a user_id (and this prevents the each method from working.) Remove as soon as the bug is fixed.
+        %td= link_to image_tag(s.profile.user.image.thumb.url), show_user_profile_path(s.profile.user)
       %td= s.profile.user.full_name
       %td= link_to 'Remove', s, :method => :delete
 
