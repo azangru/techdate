@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
 
 ######### FOR BUILDING A PROFILE ###########
 
-  after_create :create_profile
+  # after_create :create_profile
 
   # after_create :build_profile
 
