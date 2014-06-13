@@ -34,13 +34,6 @@ class Profile < ActiveRecord::Base
 
   def update_user_role
     if user.present? && user.role != "admin"
-      role = attributes.values.any? {|a|a.blank?}? "basic_user" : "premium_user"
-      user.update_attribute(:role, role)
-    end
-  end
-
-  def update_user_role
-    if user.present? && user.role != "admin"
       if user.image? && attributes.values.all? {|a| !a.blank?}
         user.update_attribute(:role, "premium_user")
       else
@@ -73,8 +66,8 @@ class Profile < ActiveRecord::Base
   end
 
   def latest_unseen_views_count # working method with an ugly SQL statement; research how to do this with Active Record finders (later)
-    results = View.find_by_sql("SELECT count(*) as record_count FROM views WHERE profile_id = #{id} and seen = false GROUP BY viewer_id, seen")
-    results.first.try(:record_count).to_i
+    # results = View.find_by_sql("SELECT count(*) as record_count FROM views WHERE profile_id = #{id} and seen = false GROUP BY viewer_id, seen")
+    views.where(seen: false).count(:viewer_id, distinct: true)
   end
 
 end

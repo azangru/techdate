@@ -133,3 +133,10 @@
 .alert-error {
   @extend .alert-danger;
 }
+
+// image thumbnail size
+.thumb-image{
+  img {
+    width: 150px;
+  }
+}

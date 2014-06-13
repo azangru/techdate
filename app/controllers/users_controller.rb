@@ -28,10 +28,10 @@ class UsersController < Devise::RegistrationsController
     render :index
   end
 
-  def create 
-    super
-    # make sure nested attributes for form are used
-    @user.update_attributes(params[:user].merge(role: "basic_user"))
-  end
+  # def create 
+  #   super
+  #   # make sure nested attributes for form are used
+  #   @user.update_attributes(params[:user].merge(role: "basic_user"))
+  # end
 
 end

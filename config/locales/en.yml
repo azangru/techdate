@@ -1,5 +1,9 @@
 # Sample localization file for English. Add more files in this directory for other locales.
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
+#en.devise.users.user.signed_up
 en:
-  hello: "Hello world"
+  devise:
+    users:
+      user:
+        signed_up: "You have signed up - cool for you!"

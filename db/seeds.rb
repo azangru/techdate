@@ -14,7 +14,8 @@ u1 = User.create!(
   email: "andrey@example.com",
   role: "admin",
   remote_image_url: "http://24.media.tumblr.com/9cf39fd2bf880820846d71a922ca15dc/tumblr_n1ni8eVGcv1s7aky5o1_1280.jpg",
-  paid: true
+  paid: true,
+  profile_attributes: {}
 )
 
 u1.profile.update_attributes(
@@ -30,7 +31,8 @@ u2 = User.create!(
   email: "gwyneth@example.com",
   role: "premium_user",
   remote_image_url: "http://24.media.tumblr.com/f85d179602a0f70ea6bedf6156b721b5/tumblr_mkqcjn0xHx1s7aky5o1_r1_1280.jpg",
-  paid: true
+  paid: true,
+  profile_attributes: {}
 )
 
 u2.profile.update_attributes(
@@ -60,7 +62,8 @@ u3 = User.create!(
   email: "scarlett@example.com",
   role: "premium_user",
   remote_image_url: "http://37.media.tumblr.com/77ea19355786597f3f967c72f8ba0c6d/tumblr_n09td4gc9Q1s7aky5o1_1280.jpg",
-  paid: true
+  paid: true,
+  profile_attributes: {}
 )
 
 u3.profile.update_attributes(
@@ -87,7 +90,8 @@ u4 = User.create!(
   email: "nicole@example.com",
   role: "premium_user",
   remote_image_url: "http://24.media.tumblr.com/7bd18a20474763993b033dfd1076642c/tumblr_mxedyzB5DB1s7aky5o1_1280.jpg",
-  paid: true
+  paid: true,
+  profile_attributes: {}
 )
 
 u4.profile.update_attributes(
@@ -115,7 +119,8 @@ u5 = User.create!(
   email: "gwen@example.com",
   role: "premium_user",
   remote_image_url: "http://24.media.tumblr.com/69d6bed2745168ab43e4282dfe864595/tumblr_mv8fq89cfh1s7aky5o1_1280.jpg",
-  paid: true
+  paid: true,
+  profile_attributes: {}
 )
 
 u5.profile.update_attributes(
@@ -141,7 +146,8 @@ u6 = User.create!(
   email: "kate@example.com",
   role: "premium_user",
   remote_image_url: "http://37.media.tumblr.com/7f28272e6f278c24f9af483cbfbbd84c/tumblr_mv8fh6Upbv1s7aky5o1_1280.jpg",
-  paid: true
+  paid: true,
+  profile_attributes: {}
 )
 
 u6.profile.update_attributes(
@@ -167,7 +173,8 @@ u7 = User.create!(
   email: "maria@example.com",
   role: "premium_user",
   remote_image_url: "http://37.media.tumblr.com/47a2c8c524cf7f976699682636745578/tumblr_mpzdn0u5Z51s7aky5o1_1280.jpg",
-  paid: true
+  paid: true,
+  profile_attributes: {}
 )
 
 u7.profile.update_attributes(
@@ -193,7 +200,8 @@ u8 = User.create!(
   email: "jane@example.com",
   role: "premium_user",
   remote_image_url: "http://31.media.tumblr.com/86054abe528ed749459ebb74bda5b0ae/tumblr_muibvt1I2e1s7aky5o1_1280.jpg",
-  paid: true
+  paid: true,
+  profile_attributes: {}
 )
 
 u8.profile.update_attributes(
@@ -219,7 +227,8 @@ u9 = User.create!(
   email: "cameron@example.com",
   role: "premium_user",
   remote_image_url: "http://24.media.tumblr.com/96c147c8ebe8facd5f573db0b9565a0d/tumblr_mpjfsbrBhS1s7aky5o1_1280.jpg",
-  paid: true
+  paid: true,
+  profile_attributes: {}
 )
 
 u9.profile.update_attributes(
@@ -245,7 +254,8 @@ u10 = User.create!(
   email: "cate@example.com",
   role: "premium_user",
   remote_image_url: "http://31.media.tumblr.com/dad9b243f609bce60bffc7e8ce2ca1f7/tumblr_mohj4wzQG41s7aky5o1_1280.jpg",
-  paid: true
+  paid: true,
+  profile_attributes: {}
 )
 
 u10.profile.update_attributes(
@@ -271,7 +281,8 @@ u11 = User.create!(
   email: "charlize@example.com",
   role: "premium_user",
   remote_image_url: "http://24.media.tumblr.com/399ab0759904b869f4ff0d8e71c2eed2/tumblr_mmr1anZ0FT1s7aky5o1_1280.jpg",
-  paid: true
+  paid: true,
+  profile_attributes: {}
 )
 
 u11.profile.update_attributes(
@@ -297,7 +308,8 @@ u12 = User.create!(
   email: "sally@example.com",
   role: "premium_user",
   remote_image_url: "http://37.media.tumblr.com/5c865d9d42f9c85ee2692f995a4e1726/tumblr_mk21holX7N1s7aky5o1_r1_1280.jpg",
-  paid: true
+  paid: true,
+  profile_attributes: {}
 )
 
 u12.profile.update_attributes(
@@ -323,7 +335,8 @@ u13 = User.create!(
   email: "david@example.com",
   role: "premium_user",
   remote_image_url: "http://24.media.tumblr.com/896fe4329c92f01da9d451ae2e79f8f3/tumblr_n38slq1xVn1s7aky5o1_1280.jpg",
-  paid: true
+  paid: true,
+  profile_attributes: {}
 )
 
 u13.profile.update_attributes(
@@ -349,7 +362,8 @@ u14 = User.create!(
   email: "yukihiro@example.com",
   role: "premium_user",
   remote_image_url: "http://24.media.tumblr.com/72af116681f27ef609b5b9dd8fc4c58b/tumblr_mkoatz6RkU1s7aky5o2_r1_1280.jpg",
-  paid: true
+  paid: true,
+  profile_attributes: {}
 )
 
 u14.profile.update_attributes(
@@ -375,7 +389,8 @@ u15 = User.create!(
   email: "jeremy@example.com",
   role: "premium_user",
   remote_image_url: "http://31.media.tumblr.com/98caa5f94a61a20a6f09a9542c806051/tumblr_mkz6xfmawF1s7aky5o2_r1_1280.jpg",
-  paid: true
+  paid: true,
+  profile_attributes: {}
 )
 
 u15.profile.update_attributes(
@@ -401,7 +416,8 @@ u16 = User.create!(
   email: "leonardo@example.com",
   role: "premium_user",
   remote_image_url: "http://24.media.tumblr.com/6e444d4a710e6bd4a31734abe1722798/tumblr_mj7267o4je1s7aky5o2_r1_1280.jpg",
-  paid: true
+  paid: true,
+  profile_attributes: {}
 )
 
 u16.profile.update_attributes(
@@ -427,7 +443,8 @@ u17 = User.create!(
   email: "tom@example.com",
   role: "premium_user",
   remote_image_url: "http://37.media.tumblr.com/abafdc38615d02abc2c7cba2573a59db/tumblr_mv8fkojfkF1s7aky5o1_1280.jpg",
-  paid: true
+  paid: true,
+  profile_attributes: {}
 )
 
 u17.profile.update_attributes(
@@ -453,7 +470,8 @@ u18 = User.create!(
   email: "tomh@example.com",
   role: "premium_user",
   remote_image_url: "http://37.media.tumblr.com/25134dde45350a1536b5252089f0bcda/tumblr_mv2tg8dzBW1s7aky5o1_1280.jpg",
-  paid: true
+  paid: true,
+  profile_attributes: {}
 )
 
 u18.profile.update_attributes(
@@ -479,7 +497,8 @@ u19 = User.create!(
   email: "brad@example.com",
   role: "premium_user",
   remote_image_url: "http://31.media.tumblr.com/37d702013ed44221374b64f85dea376f/tumblr_mk24a5QcX61s7aky5o2_r2_1280.jpg",
-  paid: true
+  paid: true,
+  profile_attributes: {}
 )
 
 u19.profile.update_attributes(
@@ -505,7 +524,8 @@ u20 = User.create!(
   email: "george@example.com",
   role: "premium_user",
   remote_image_url: "http://24.media.tumblr.com/0a99e30973d3957bad553af26816ef61/tumblr_mj6r8jmivW1s7aky5o2_r1_1280.jpg",
-  paid: true
+  paid: true,
+  profile_attributes: {}
 )
 
 u20.profile.update_attributes(
@@ -531,7 +551,8 @@ u21 = User.create!(
   email: "bruce@example.com",
   role: "premium_user",
   remote_image_url: "http://37.media.tumblr.com/64ed99a0fc43606a3905d70348d97aae/tumblr_mj9dqiRFhA1s7aky5o2_r1_1280.jpg",
-  paid: true
+  paid: true,
+  profile_attributes: {}
 )
 
 u21.profile.update_attributes(
@@ -557,7 +578,8 @@ u22 = User.create!(
   email: "matt@example.com",
   role: "premium_user",
   remote_image_url: "http://37.media.tumblr.com/ae3aba3c0a2af7adff378df79bfcc64b/tumblr_mlkam4rGTL1s7aky5o1_1280.jpg",
-  paid: true
+  paid: true,
+  profile_attributes: {}
 )
 
 u22.profile.update_attributes(
